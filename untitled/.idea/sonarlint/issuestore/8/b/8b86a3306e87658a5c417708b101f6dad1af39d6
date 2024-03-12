@@ -1,0 +1,22 @@
+
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨­Þìûÿÿÿÿ8»Ùž–ã1
+T
+java:S1135"2Complete the task associated to this TODO comment.(‘«ßÂùÿÿÿÿ8ÔÙž–ã1
+]
+java:S1854[";Remove this useless assignment to local variable "element".(Œàã¼ùÿÿÿÿ8éÙž–ã1
+X	java:S125("<This block of commented-out lines of code should be removed.(¦ëô’8íÙž–ã1
+X	java:S125Y"<This block of commented-out lines of code should be removed.(éÒ…Ó8óÙž–ã1
+N
+java:S1481[",Remove this unused "element" local variable.(Œàã¼ùÿÿÿÿ8øÙž–ã1
+]	java:S125\"<This block of commented-out lines of code should be removed.(›ùôªüÿÿÿÿ8øÙž–ã1
+]	java:S125u"<This block of commented-out lines of code should be removed.(Î‘™ýÿÿÿÿ8„Úž–ã1
+X
+java:S1854":Remove this useless assignment to local variable "object".(ÀÉ¿ô8‘Úž–ã1
+]
+java:S1854":Remove this useless assignment to local variable "method".(‰…Ÿýÿÿÿÿ8“Úž–ã1
+^	java:S125Ž"<This block of commented-out lines of code should be removed.(÷´ç°ÿÿÿÿÿ8•Úž–ã1
+N
+java:S1481"+Remove this unused "method" local variable.(‰…Ÿýÿÿÿÿ8—Úž–ã1
+I
+java:S1481"+Remove this unused "object" local variable.(ÀÉ¿ô8˜Úž–ã1

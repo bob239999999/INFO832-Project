@@ -1,0 +1,17 @@
+
+‡
+java:S11490"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(žžùŸûÿÿÿÿ8ò §–ã1
+‡
+java:S11490"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(žžùŸûÿÿÿÿ8ó §–ã1
+‡
+java:S11491"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(ùÀÅÇýÿÿÿÿ8ô §–ã1
+X	java:S125!"<This block of commented-out lines of code should be removed.(ý…ªì8ö §–ã1
+[
+java:S1155=">Use isEmpty() to check whether the collection is empty or not.(€‡ä§8ƒ¡§–ã1
+[
+java:S1155=">Use isEmpty() to check whether the collection is empty or not.(€‡ä§8„¡§–ã1
+]	java:S125Q"<This block of commented-out lines of code should be removed.(¬Šüÿúÿÿÿÿ8Š¡§–ã1
+O
+java:S1068"3Remove this unused "currentLapsTime" private field.(ÜŠï8¥¡§–ã1
+V
+java:S11440"4Remove this unused private "dates2Timalapse" method.(žžùŸûÿÿÿÿ8§¡§–ã1
