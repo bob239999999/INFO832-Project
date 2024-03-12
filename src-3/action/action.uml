@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
+  <uml:Model xmi:id="_Ku2bENxgEe6zL95jRs6BlA" name="action">
+    <eAnnotations xmi:id="_LRYgYNxgEe6zL95jRs6BlA" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_LRZHcNxgEe6zL95jRs6BlA" source="codegen">
+        <details xmi:id="_LRZHcdxgEe6zL95jRs6BlA" key="codegenDirectory" value="/Projet/src-3"/>
+        <details xmi:id="_L34fsNxgEe6zL95jRs6BlA" key="AssociatedSourceCode" value="/Projet/src-3/action/DiscreteAction.java;157198594/1;/Projet/src-3/action/DiscreteActionDependent.java;1855902820/1;/Projet/src-3/action/DiscreteActionInterface.java;2066491410/1;/Projet/src-3/action/DiscreteActionOnOffDependent.java;961236265/1;"/>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_Lh8E4NxgEe6zL95jRs6BlA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_Lh9TANxgEe6zL95jRs6BlA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+    </elementImport>
+    <elementImport xmi:id="_Lh9TAdxgEe6zL95jRs6BlA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+    </elementImport>
+    <elementImport xmi:id="_Lh9TAtxgEe6zL95jRs6BlA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </elementImport>
+    <elementImport xmi:id="_Lh9TA9xgEe6zL95jRs6BlA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </elementImport>
+    <elementImport xmi:id="_Lh9TBNxgEe6zL95jRs6BlA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </elementImport>
+    <elementImport xmi:id="_Lh9TBdxgEe6zL95jRs6BlA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </elementImport>
+    <elementImport xmi:id="_Lh96ENxgEe6zL95jRs6BlA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+    </elementImport>
+    <elementImport xmi:id="_Lh-hINxgEe6zL95jRs6BlA">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_LiCykNxgEe6zL95jRs6BlA" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_LiCykdxgEe6zL95jRs6BlA" name="lang">
+        <packagedElement xmi:type="uml:Package" xmi:id="_LiCyktxgEe6zL95jRs6BlA" name="reflect">
+          <packagedElement xmi:type="uml:Class" xmi:id="_Lo8r0NxgEe6zL95jRs6BlA" name="Method"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_LprroNxgEe6zL95jRs6BlA" name="Object"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_Lp01kNxgEe6zL95jRs6BlA" name="Comparable"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_LiDZoNxgEe6zL95jRs6BlA" name="util">
+        <packagedElement xmi:type="uml:Package" xmi:id="_LiDZodxgEe6zL95jRs6BlA" name="logging">
+          <packagedElement xmi:type="uml:Class" xmi:id="_LpCycdxgEe6zL95jRs6BlA" name="ConsoleHandler"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_LpEAkNxgEe6zL95jRs6BlA" name="FileHandler"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_LpGc0NxgEe6zL95jRs6BlA" name="Level"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_LpISAdxgEe6zL95jRs6BlA" name="Logger"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Lo_vINxgEe6zL95jRs6BlA" name="TreeSet"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_LpBkUNxgEe6zL95jRs6BlA" name="Vector"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_LpYJoNxgEe6zL95jRs6BlA" name="Iterator"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_LiEAsNxgEe6zL95jRs6BlA" name="discreteBehaviorSimulator">
+      <packagedElement xmi:type="uml:Class" xmi:id="_LpKHMNxgEe6zL95jRs6BlA" name="LogFormatter"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_LiEnwNxgEe6zL95jRs6BlA" name="timer">
+      <packagedElement xmi:type="uml:Interface" xmi:id="_LpL8YNxgEe6zL95jRs6BlA" name="Timer"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_LpgsgNxgEe6zL95jRs6BlA" name="DateTimer"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_LiO_0NxgEe6zL95jRs6BlA" name="action">
+      <packagedElement xmi:type="uml:Class" xmi:id="_LjLbANxgEe6zL95jRs6BlA" name="DiscreteAction">
+        <ownedComment xmi:id="_Lq-FENxgEe6zL95jRs6BlA">
+          <body>@author Tiphaine Bulou (2016)&#xD;
+@author Flavien Vernier&#xD;
+ *</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_LqKz0NxgEe6zL95jRs6BlA" name="object" type="_LprroNxgEe6zL95jRs6BlA" isReadOnly="true" association="_LrIdIdxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_LqLa4NxgEe6zL95jRs6BlA" name="method" type="_Lo8r0NxgEe6zL95jRs6BlA" isReadOnly="true" association="_LrKSUNxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_LqLa4dxgEe6zL95jRs6BlA" name="timmer" visibility="private" type="_LpL8YNxgEe6zL95jRs6BlA" association="_LrLgcdxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_LqMpANxgEe6zL95jRs6BlA" name="lapsTime" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_LqN3INxgEe6zL95jRs6BlA" name="logger" visibility="private" type="_LpISAdxgEe6zL95jRs6BlA" association="_LrMukdxgEe6zL95jRs6BlA"/>
+        <interfaceRealization xmi:id="_LpT4MNxgEe6zL95jRs6BlA" client="_LjLbANxgEe6zL95jRs6BlA" supplier="_Lj7o8NxgEe6zL95jRs6BlA" contract="_Lj7o8NxgEe6zL95jRs6BlA"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_LqoG0NxgEe6zL95jRs6BlA" name="DiscreteAction" specification="_LjXBMNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LqoG0dxgEe6zL95jRs6BlA" type="_LjLbANxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>// Start logger&#xD;
+			this.logger = Logger.getLogger(&quot;DAS&quot;);&#xD;
+			//this.logger = Logger.getLogger(&quot;APP&quot;);&#xD;
+			this.logger.setLevel(Level.ALL);&#xD;
+			this.logger.setUseParentHandlers(true);&#xD;
+			&#xD;
+			/*FileHandler logFile; &#xD;
+			ConsoleHandler logConsole; &#xD;
+			try{&#xD;
+				this.logFile = new FileHandler(this.getClass().getName() + &quot;.log&quot;);&#xD;
+				//this.logFile.setFormatter(new SimpleFormatter());&#xD;
+				this.logFile.setFormatter(new LogFormatter());&#xD;
+				this.logConsole = new ConsoleHandler();&#xD;
+			}catch(Exception e){&#xD;
+				e.printStackTrace();&#xD;
+			}&#xD;
+			this.logger.addHandler(logFile);&#xD;
+			this.logger.addHandler(logConsole);*/&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lqye4NxgEe6zL95jRs6BlA" name="DiscreteAction" specification="_Lpuu8NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lqye4dxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lqye4txgEe6zL95jRs6BlA" name="m">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Lqye49xgEe6zL95jRs6BlA" name="timmer" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lqye5NxgEe6zL95jRs6BlA" type="_LjLbANxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>this();&#xD;
+		this.object = o;&#xD;
+		try{	&#xD;
+			this.method = o.getClass().getDeclaredMethod(m, new Class&lt;?>[0]);&#xD;
+		}&#xD;
+		catch(Exception e){&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		this.timmer = timmer;&#xD;
+		//this.updateTimeLaps();&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lqye5dxgEe6zL95jRs6BlA" name="spendTime" specification="_LjdH0NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lqye5txgEe6zL95jRs6BlA" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>Integer old = this.lapsTime;&#xD;
+		if(this.lapsTime != null) {&#xD;
+			this.lapsTime -= t;&#xD;
+		}&#xD;
+		this.logger.log(Level.FINE, &quot;[DA] operate spendTime on  &quot; + this.getObject().getClass().getName() + &quot;:&quot; + this.getObject().hashCode() + &quot;: old time &quot; + old + &quot; new time &quot; + this.getCurrentLapsTime());&#xD;
+		//System.out.println(         &quot;[DA] operate spendTime on  &quot; + this.getObject().getClass().getName() + &quot;:&quot; + this.getObject().hashCode() + &quot;: old time &quot; + old + &quot; new time &quot; + this.getCurrentLapsTime() + &quot;\n&quot;);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_LqzF8NxgEe6zL95jRs6BlA" name="getCurrentLapsTime" specification="_LjeV8NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LqzF8dxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return lapsTime;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_LqztANxgEe6zL95jRs6BlA" name="compareTo" specification="_LpVGUNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LqztAdxgEe6zL95jRs6BlA" name="c" type="_Lj7o8NxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LqztAtxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>if (this.lapsTime == null) { // no lapstime is equivalent to infinity &#xD;
+			return 1;&#xD;
+		}&#xD;
+		if (c.getCurrentLapsTime() == null) {// no lapstime is equivalent to infinity &#xD;
+			return -1;&#xD;
+		}&#xD;
+ 	if(this.lapsTime > c.getCurrentLapsTime()){&#xD;
+ 		return 1;&#xD;
+ 	}&#xD;
+ 	if(this.lapsTime &lt; c.getCurrentLapsTime()){&#xD;
+ 		return -1;&#xD;
+ 	}&#xD;
+		if(this.lapsTime == c.getCurrentLapsTime()){&#xD;
+			return 0;&#xD;
+		}&#xD;
+		return 0;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq0UENxgEe6zL95jRs6BlA" name="toString" specification="_Lje9AdxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq0UEdxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return &quot;Object : &quot; + this.object.getClass().getName() + &quot;\n Method : &quot; + this.method.getName()+&quot;\n Stat. : &quot;+ this.timmer + &quot;\n delay: &quot; + this.lapsTime;&#xD;
+&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq0UEtxgEe6zL95jRs6BlA" name="next" specification="_LjgyMNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq0UE9xgEe6zL95jRs6BlA" type="_Lj7o8NxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>Integer old = this.lapsTime;&#xD;
+		this.lapsTime = this.timmer.next();&#xD;
+		this.logger.log(Level.FINE, &quot;[DA] operate next on  &quot; + this.getObject().getClass().getName() + &quot;:&quot; + this.getObject().hashCode() + &quot;: old time &quot; + old + &quot; new time &quot; + this.getCurrentLapsTime());&#xD;
+		//System.out.println(&quot;[DA] operate 'next' on &quot; + this.getObject().getClass().getName() + &quot;:&quot; + this.getObject().hashCode() + &quot;: old time &quot; + old + &quot; new time &quot; + this.getCurrentLapsTime() + &quot;\n&quot;);&#xD;
+		return this;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq07INxgEe6zL95jRs6BlA" name="hasNext" specification="_LjiAUNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq07IdxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>Boolean more=false;&#xD;
+		if (this.timmer != null &amp;&amp; this.timmer.hasNext()) {&#xD;
+			more = true;&#xD;
+		}/*else if (this.dates != null) {&#xD;
+			more = !this.dates.isEmpty();&#xD;
+		}else if (this.lapsTimes != null) {&#xD;
+			more = !this.lapsTimes.isEmpty();&#xD;
+		}*/&#xD;
+		return more;		&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_LjXBMNxgEe6zL95jRs6BlA" name="DiscreteAction" visibility="private" method="_LqoG0NxgEe6zL95jRs6BlA">
+          <eAnnotations xmi:id="_LjaEgNxgEe6zL95jRs6BlA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_LjaEgdxgEe6zL95jRs6BlA" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_LjarkNxgEe6zL95jRs6BlA" type="_LjLbANxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LjdH0NxgEe6zL95jRs6BlA" name="spendTime" method="_Lqye5dxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LjdH0dxgEe6zL95jRs6BlA" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LjeV8NxgEe6zL95jRs6BlA" name="getCurrentLapsTime" method="_LqzF8NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lje9ANxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Lje9AdxgEe6zL95jRs6BlA" name="toString" method="_Lq0UENxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LjgLINxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LjgyMNxgEe6zL95jRs6BlA" name="next" method="_Lq0UEtxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LpVtYdxgEe6zL95jRs6BlA" type="_Lj7o8NxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LjiAUNxgEe6zL95jRs6BlA" name="hasNext" method="_Lq07INxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LjiAUdxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LpVGUNxgEe6zL95jRs6BlA" name="compareTo" method="_LqztANxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LpVGUdxgEe6zL95jRs6BlA" name="c" type="_Lj7o8NxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LpVtYNxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Lpuu8NxgEe6zL95jRs6BlA" name="DiscreteAction" method="_Lqye4NxgEe6zL95jRs6BlA">
+          <eAnnotations xmi:id="_Lpv9ENxgEe6zL95jRs6BlA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_Lpv9EdxgEe6zL95jRs6BlA" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_Lpuu8dxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lpuu8txgEe6zL95jRs6BlA" name="m">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_LpvWANxgEe6zL95jRs6BlA" name="timmer" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lpv9EtxgEe6zL95jRs6BlA" type="_LjLbANxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_LjouANxgEe6zL95jRs6BlA" name="DiscreteActionDependent">
+        <ownedComment xmi:id="_Lq-sINxgEe6zL95jRs6BlA">
+          <body>@author flver&#xD;
+ *</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_LqPFQNxgEe6zL95jRs6BlA" name="baseAction" visibility="protected" type="_LjLbANxgEe6zL95jRs6BlA" association="_LrPK0dxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_LqPsUdxgEe6zL95jRs6BlA" name="depedentActions" visibility="protected" type="_Lo_vINxgEe6zL95jRs6BlA" association="_LrS1MNxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_LqSIkNxgEe6zL95jRs6BlA" name="it" visibility="private" type="_LpYJoNxgEe6zL95jRs6BlA" association="_LrTcQdxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_LqT9wdxgEe6zL95jRs6BlA" name="currentAction" visibility="protected" type="_LjLbANxgEe6zL95jRs6BlA" association="_LrVRcNxgEe6zL95jRs6BlA"/>
+        <interfaceRealization xmi:id="_LpZXwNxgEe6zL95jRs6BlA" client="_LjouANxgEe6zL95jRs6BlA" supplier="_Lj7o8NxgEe6zL95jRs6BlA" contract="_Lj7o8NxgEe6zL95jRs6BlA"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq1iMNxgEe6zL95jRs6BlA" name="DiscreteActionDependent" specification="_LpyZUNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq1iMdxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq1iMtxgEe6zL95jRs6BlA" name="baseMethodName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Lq1iM9xgEe6zL95jRs6BlA" name="timerBase" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq1iNNxgEe6zL95jRs6BlA" type="_LjouANxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>this.baseAction = new DiscreteAction(o, baseMethodName, timerBase);&#xD;
+		this.depedentActions = new TreeSet&lt;DiscreteAction>();&#xD;
+		this.it = this.depedentActions.iterator();&#xD;
+		this.currentAction = this.baseAction;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq2JQNxgEe6zL95jRs6BlA" name="addDependence" specification="_LpzAYdxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq2JQdxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq2JQtxgEe6zL95jRs6BlA" name="depentMethodName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Lq2JQ9xgEe6zL95jRs6BlA" name="timerDependence" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+          <language>java</language>
+          <body>this.depedentActions.add(new DiscreteAction(o, depentMethodName, timerDependence));&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq2wUNxgEe6zL95jRs6BlA" name="reInit" specification="_LjrxUNxgEe6zL95jRs6BlA">
+          <language>java</language>
+          <body>//this.baseAction.updateTimeLaps();&#xD;
+		for (Iterator&lt;DiscreteAction> iter = this.depedentActions.iterator(); iter.hasNext(); ) {&#xD;
+		    DiscreteAction element = iter.next();&#xD;
+		    //element.updateTimeLaps();&#xD;
+		}		&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq2wUdxgEe6zL95jRs6BlA" name="nextMethod" specification="_LjsYYNxgEe6zL95jRs6BlA">
+          <language>java</language>
+          <body>if (this.currentAction == this.baseAction){&#xD;
+			this.it = this.depedentActions.iterator();&#xD;
+			this.currentAction = this.it.next();&#xD;
+		}else if(this.currentAction == this.depedentActions.last()){&#xD;
+			this.currentAction = this.baseAction;&#xD;
+			this.reInit();&#xD;
+		}else {&#xD;
+			this.currentAction = this.it.next();&#xD;
+		}&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq3XYNxgEe6zL95jRs6BlA" name="spendTime" specification="_Ljs_cNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq3XYdxgEe6zL95jRs6BlA" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>for (Iterator&lt;DiscreteAction> iter = this.depedentActions.iterator(); iter.hasNext(); ) {&#xD;
+		    DiscreteAction element = iter.next();&#xD;
+		    element.spendTime(t);&#xD;
+		}&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq3XYtxgEe6zL95jRs6BlA" name="updateTimeLaps" specification="_LjtmgNxgEe6zL95jRs6BlA">
+          <language>java</language>
+          <body>// time laps is updated at the re-initialization&#xD;
+		//this.currentAction.updateTimeLaps();	&#xD;
+		this.nextMethod();	&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq3XY9xgEe6zL95jRs6BlA" name="getMethod" specification="_LjtmgdxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq3XZNxgEe6zL95jRs6BlA" type="_Lo8r0NxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>return this.currentAction.getMethod();&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq3XZdxgEe6zL95jRs6BlA" name="getCurrentLapsTime" specification="_LjuNkNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq3XZtxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return this.currentAction.getCurrentLapsTime();&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq3XZ9xgEe6zL95jRs6BlA" name="getObject" specification="_Lju0odxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq3XaNxgEe6zL95jRs6BlA" type="_LprroNxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>return this.currentAction.getObject();&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq3-cNxgEe6zL95jRs6BlA" name="compareTo" specification="_Lpal4NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq3-cdxgEe6zL95jRs6BlA" name="c" type="_Lj7o8NxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq3-ctxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return this.currentAction.compareTo(c);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq3-c9xgEe6zL95jRs6BlA" name="isEmpty" specification="_LjvbsNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq3-dNxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return !this.hasNext();&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq4lgNxgEe6zL95jRs6BlA" name="next" specification="_Ljwp0NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq4lgdxgEe6zL95jRs6BlA" type="_Lj7o8NxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>//Integer lapsTime = this.getNextLapsTime();&#xD;
+		Method method = this.getMethod();&#xD;
+		Object object = this.getObject();&#xD;
+		return this;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq5MkNxgEe6zL95jRs6BlA" name="hasNext" specification="_LjxQ4NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq5MkdxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return this.baseAction.hasNext() || !this.depedentActions.isEmpty();		&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_LjrxUNxgEe6zL95jRs6BlA" name="reInit" visibility="private" method="_Lq2wUNxgEe6zL95jRs6BlA"/>
+        <ownedOperation xmi:id="_LjsYYNxgEe6zL95jRs6BlA" name="nextMethod" method="_Lq2wUdxgEe6zL95jRs6BlA"/>
+        <ownedOperation xmi:id="_Ljs_cNxgEe6zL95jRs6BlA" name="spendTime" method="_Lq3XYNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Ljs_cdxgEe6zL95jRs6BlA" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LjtmgNxgEe6zL95jRs6BlA" name="updateTimeLaps" method="_Lq3XYtxgEe6zL95jRs6BlA"/>
+        <ownedOperation xmi:id="_LjtmgdxgEe6zL95jRs6BlA" name="getMethod" method="_Lq3XY9xgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LpznctxgEe6zL95jRs6BlA" type="_Lo8r0NxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LjuNkNxgEe6zL95jRs6BlA" name="getCurrentLapsTime" method="_Lq3XZdxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lju0oNxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Lju0odxgEe6zL95jRs6BlA" name="getObject" method="_Lq3XZ9xgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lp0OgNxgEe6zL95jRs6BlA" type="_LprroNxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LjvbsNxgEe6zL95jRs6BlA" name="isEmpty" method="_Lq3-c9xgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LjwCwNxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Ljwp0NxgEe6zL95jRs6BlA" name="next" method="_Lq4lgNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LpbM8dxgEe6zL95jRs6BlA" type="_Lj7o8NxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LjxQ4NxgEe6zL95jRs6BlA" name="hasNext" method="_Lq5MkNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LjxQ4dxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Lpal4NxgEe6zL95jRs6BlA" name="compareTo" method="_Lq3-cNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lpal4dxgEe6zL95jRs6BlA" name="c" type="_Lj7o8NxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LpbM8NxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LpyZUNxgEe6zL95jRs6BlA" name="DiscreteActionDependent" method="_Lq1iMNxgEe6zL95jRs6BlA">
+          <eAnnotations xmi:id="_LpyZVNxgEe6zL95jRs6BlA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_LpyZVdxgEe6zL95jRs6BlA" key="create"/>
+          </eAnnotations>
+          <ownedComment xmi:id="_Lq-sIdxgEe6zL95jRs6BlA">
+            <body>Construct a series of dependent actions, first action (method) called is baseMethodName, then method nextMethod() is called to select the next action. &#xD;
+	 * &#xD;
+	 * @param o&#xD;
+	 * @param baseMethodName&#xD;
+	 * @param timerBase</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_LpyZUdxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LpyZUtxgEe6zL95jRs6BlA" name="baseMethodName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_LpyZU9xgEe6zL95jRs6BlA" name="timerBase" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LpzAYNxgEe6zL95jRs6BlA" type="_LjouANxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LpzAYdxgEe6zL95jRs6BlA" name="addDependence" method="_Lq2JQNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LpzAYtxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LpzncNxgEe6zL95jRs6BlA" name="depentMethodName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_LpzncdxgEe6zL95jRs6BlA" name="timerDependence" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_Lj7o8NxgEe6zL95jRs6BlA" name="DiscreteActionInterface">
+        <ownedComment xmi:id="_Lq-sItxgEe6zL95jRs6BlA">
+          <body>TODO must implement Iterator&lt;Action></body>
+        </ownedComment>
+        <generalization xmi:id="_Lp2DsNxgEe6zL95jRs6BlA" general="_Lp01kNxgEe6zL95jRs6BlA"/>
+        <generalization xmi:id="_Lp2qwdxgEe6zL95jRs6BlA" general="_LpYJoNxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_Lj9eINxgEe6zL95jRs6BlA" name="method" type="_Lo8r0NxgEe6zL95jRs6BlA" isReadOnly="true" association="_LrGn8NxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_Lj-FMNxgEe6zL95jRs6BlA" name="currentLapsTime" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedOperation xmi:id="_Lj83ENxgEe6zL95jRs6BlA" name="spendTime">
+          <ownedComment xmi:id="_Lq_TMNxgEe6zL95jRs6BlA">
+            <body>decrease the time of discrete action</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Lj83EdxgEe6zL95jRs6BlA" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Lj-sQNxgEe6zL95jRs6BlA" name="getObject">
+          <ownedComment xmi:id="_Lq_TMdxgEe6zL95jRs6BlA">
+            <body>get the object on which the method must be invoked</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Lp4f8dxgEe6zL95jRs6BlA" type="_LprroNxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Lj_TUNxgEe6zL95jRs6BlA" name="next">
+          <ownedComment xmi:id="_Lq_TM9xgEe6zL95jRs6BlA">
+            <body>(non-Javadoc)&#xD;
+	 * @see java.util.Iterator#next()</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_LpfeYNxgEe6zL95jRs6BlA" type="_Lj7o8NxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LpeQQNxgEe6zL95jRs6BlA" name="compareTo">
+          <ownedComment xmi:id="_Lq_TMtxgEe6zL95jRs6BlA">
+            <body>compare discrete action according to the time before execution&#xD;
+	 * &#xD;
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Lpe3UNxgEe6zL95jRs6BlA" name="c" type="_Lj7o8NxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lpe3UdxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_LkDkwNxgEe6zL95jRs6BlA" name="DiscreteActionOnOffDependent">
+        <ownedComment xmi:id="_Lq_TNNxgEe6zL95jRs6BlA">
+          <body>@author flver&#xD;
+ *</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_LqVy8NxgEe6zL95jRs6BlA" name="onAction" visibility="protected" type="_Lj7o8NxgEe6zL95jRs6BlA" association="_LrV4gdxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_LqWaAdxgEe6zL95jRs6BlA" name="offAction" visibility="protected" type="_Lj7o8NxgEe6zL95jRs6BlA" association="_LrWfkdxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_LqXoINxgEe6zL95jRs6BlA" name="currentAction" visibility="protected" type="_Lj7o8NxgEe6zL95jRs6BlA" association="_LrXtsNxgEe6zL95jRs6BlA"/>
+        <ownedAttribute xmi:id="_LqYPMdxgEe6zL95jRs6BlA" name="currentLapsTime" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_LqaEYNxgEe6zL95jRs6BlA" name="lastOffDelay" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_LqaEYdxgEe6zL95jRs6BlA" value="0"/>
+        </ownedAttribute>
+        <interfaceRealization xmi:id="_LphTkdxgEe6zL95jRs6BlA" client="_LkDkwNxgEe6zL95jRs6BlA" supplier="_Lj7o8NxgEe6zL95jRs6BlA" contract="_Lj7o8NxgEe6zL95jRs6BlA"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq6asNxgEe6zL95jRs6BlA" name="DiscreteActionOnOffDependent" specification="_Lp5HANxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq6asdxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq6astxgEe6zL95jRs6BlA" name="on">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Lq6as9xgEe6zL95jRs6BlA" name="timerOn" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq6atNxgEe6zL95jRs6BlA" name="off">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Lq6atdxgEe6zL95jRs6BlA" name="timerOff" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq6attxgEe6zL95jRs6BlA" type="_LkDkwNxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>this.onAction = new DiscreteAction(o, on, timerOn);&#xD;
+		this.offAction = new DiscreteAction(o, off, timerOff);&#xD;
+		&#xD;
+		this.currentAction = this.offAction;&#xD;
+		this.currentLapsTime = 0;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq6at9xgEe6zL95jRs6BlA" name="dates2Timalapse" specification="_Lp68MNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq6auNxgEe6zL95jRs6BlA" name="datesOn" type="_Lo_vINxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq6audxgEe6zL95jRs6BlA" name="datesOff" type="_Lo_vINxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq6autxgEe6zL95jRs6BlA" name="timeLapseOn" type="_LpBkUNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq6au9xgEe6zL95jRs6BlA" name="timeLapseOff" type="_LpBkUNxgEe6zL95jRs6BlA"/>
+          <language>java</language>
+          <body>Vector&lt;Integer> currentTimeLapse;&#xD;
+		TreeSet&lt;Integer> currentDates;&#xD;
+		Integer date=0;&#xD;
+		if(datesOn.first()&lt;datesOff.first()) {&#xD;
+			currentTimeLapse = timeLapseOn;&#xD;
+			currentDates = datesOn;&#xD;
+		}else {&#xD;
+			currentTimeLapse = timeLapseOff;	&#xD;
+			currentDates = datesOff;		&#xD;
+		}&#xD;
+		Integer nextDate;&#xD;
+		&#xD;
+		while(datesOn.size()>0 || datesOff.size()>0) {&#xD;
+			nextDate = currentDates.first();&#xD;
+		&#xD;
+			currentTimeLapse.add(nextDate - date);&#xD;
+			currentDates.remove(nextDate);&#xD;
+		&#xD;
+			date = nextDate;&#xD;
+			&#xD;
+			if(currentDates == datesOn) {&#xD;
+				currentDates = datesOff;&#xD;
+				currentTimeLapse = timeLapseOff;&#xD;
+			}else {&#xD;
+				currentDates = datesOn;&#xD;
+				currentTimeLapse = timeLapseOn;			&#xD;
+			}&#xD;
+		}&#xD;
+		&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq7o0NxgEe6zL95jRs6BlA" name="DiscreteActionOnOffDependent" specification="_LqDfENxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq7o0dxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq7o0txgEe6zL95jRs6BlA" name="on">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Lq7o09xgEe6zL95jRs6BlA" name="datesOn" type="_Lo_vINxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq7o1NxgEe6zL95jRs6BlA" name="off">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Lq7o1dxgEe6zL95jRs6BlA" name="datesOff" type="_Lo_vINxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq7o1txgEe6zL95jRs6BlA" type="_LkDkwNxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>/*Vector&lt;Integer> timeLapseOn = new Vector&lt;Integer>();&#xD;
+		Vector&lt;Integer> timeLapseOff = new Vector&lt;Integer>();&#xD;
+		&#xD;
+		dates2Timalapse((TreeSet&lt;Integer>)datesOn.clone(), (TreeSet&lt;Integer>)datesOff.clone(), timeLapseOn, timeLapseOff);&#xD;
+		*/&#xD;
+		this.onAction = new DiscreteAction(o, on, new DateTimer(datesOn));&#xD;
+		this.offAction = new DiscreteAction(o, off, new DateTimer(datesOff));&#xD;
+		&#xD;
+		&#xD;
+		&#xD;
+		if(datesOn.first() &lt; datesOff.first()){&#xD;
+			this.currentAction = this.onAction;&#xD;
+		}else{&#xD;
+			this.currentAction = this.offAction;&#xD;
+		}&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq7o19xgEe6zL95jRs6BlA" name="nextAction" specification="_LkIdQNxgEe6zL95jRs6BlA">
+          <language>java</language>
+          <body>if (this.currentAction == this.onAction){&#xD;
+			this.currentAction = this.offAction;&#xD;
+			this.currentAction = this.currentAction.next();&#xD;
+			this.lastOffDelay = this.currentAction.getCurrentLapsTime();&#xD;
+		}else{&#xD;
+			this.currentAction = this.onAction;&#xD;
+			this.currentAction = this.currentAction.next();&#xD;
+			this.currentAction.spendTime(this.lastOffDelay);&#xD;
+		}&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq7o2NxgEe6zL95jRs6BlA" name="spendTime" specification="_LkJEUNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq7o2dxgEe6zL95jRs6BlA" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>this.currentAction.spendTime(t);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq7o2txgEe6zL95jRs6BlA" name="getMethod" specification="_LkJrYNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq7o29xgEe6zL95jRs6BlA" type="_Lo8r0NxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>return this.currentAction.getMethod();&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq8P4NxgEe6zL95jRs6BlA" name="getObject" specification="_LkKScNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq8P4dxgEe6zL95jRs6BlA" type="_LprroNxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>return this.currentAction.getObject();&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq8P4txgEe6zL95jRs6BlA" name="compareTo" specification="_LpjIwNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq8P49xgEe6zL95jRs6BlA" name="c" type="_Lj7o8NxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lq8P5NxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return this.currentAction.compareTo(c);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq828NxgEe6zL95jRs6BlA" name="next" specification="_LkLgkNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq828dxgEe6zL95jRs6BlA" type="_Lj7o8NxgEe6zL95jRs6BlA" direction="return"/>
+          <language>java</language>
+          <body>this.nextAction();&#xD;
+		return this;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lq828txgEe6zL95jRs6BlA" name="hasNext" specification="_LkMusNxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lq8289xgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return this.onAction.hasNext() || this.offAction.hasNext();		&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_LkIdQNxgEe6zL95jRs6BlA" name="nextAction" method="_Lq7o19xgEe6zL95jRs6BlA"/>
+        <ownedOperation xmi:id="_LkJEUNxgEe6zL95jRs6BlA" name="spendTime" method="_Lq7o2NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LkJEUdxgEe6zL95jRs6BlA" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LkJrYNxgEe6zL95jRs6BlA" name="getMethod" method="_Lq7o2txgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LqHJcNxgEe6zL95jRs6BlA" type="_Lo8r0NxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LkKScNxgEe6zL95jRs6BlA" name="getObject" method="_Lq8P4NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LqHwgNxgEe6zL95jRs6BlA" type="_LprroNxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LkLgkNxgEe6zL95jRs6BlA" name="next" method="_Lq828NxgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lpjv0NxgEe6zL95jRs6BlA" type="_Lj7o8NxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LkMusNxgEe6zL95jRs6BlA" name="hasNext" method="_Lq828txgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LkMusdxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LpjIwNxgEe6zL95jRs6BlA" name="compareTo" method="_Lq8P4txgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_LpjIwdxgEe6zL95jRs6BlA" name="c" type="_Lj7o8NxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LpjIwtxgEe6zL95jRs6BlA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Lp5HANxgEe6zL95jRs6BlA" name="DiscreteActionOnOffDependent" method="_Lq6asNxgEe6zL95jRs6BlA">
+          <eAnnotations xmi:id="_Lp6VINxgEe6zL95jRs6BlA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_Lp6VIdxgEe6zL95jRs6BlA" key="create"/>
+          </eAnnotations>
+          <ownedComment xmi:id="_Lq_6QNxgEe6zL95jRs6BlA">
+            <body>Construct an On Off dependence, first action (method) called is On, then method nextMethod() is called to select the next action.&#xD;
+	 * The default behavior of nextMethod() is to switch between On and Off actions.  It can be change by overloading. &#xD;
+	 * &#xD;
+	 * @param o&#xD;
+	 * @param on&#xD;
+	 * @param timerOn&#xD;
+	 * @param off&#xD;
+	 * @param timerOff</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Lp5uENxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lp5uEdxgEe6zL95jRs6BlA" name="on">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Lp5uEtxgEe6zL95jRs6BlA" name="timerOn" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lp5uE9xgEe6zL95jRs6BlA" name="off">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Lp5uFNxgEe6zL95jRs6BlA" name="timerOff" type="_LpL8YNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lp6VItxgEe6zL95jRs6BlA" type="_LkDkwNxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Lp68MNxgEe6zL95jRs6BlA" name="dates2Timalapse" visibility="private" method="_Lq6at9xgEe6zL95jRs6BlA">
+          <ownedParameter xmi:id="_Lp7jQNxgEe6zL95jRs6BlA" name="datesOn" type="_Lo_vINxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lp7jQdxgEe6zL95jRs6BlA" name="datesOff" type="_Lo_vINxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lp7jQtxgEe6zL95jRs6BlA" name="timeLapseOn" type="_LpBkUNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_Lp7jQ9xgEe6zL95jRs6BlA" name="timeLapseOff" type="_LpBkUNxgEe6zL95jRs6BlA"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_LqDfENxgEe6zL95jRs6BlA" name="DiscreteActionOnOffDependent" method="_Lq7o0NxgEe6zL95jRs6BlA">
+          <eAnnotations xmi:id="_LqEGItxgEe6zL95jRs6BlA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_LqEGI9xgEe6zL95jRs6BlA" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_LqDfEdxgEe6zL95jRs6BlA" name="o" type="_LprroNxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LqDfEtxgEe6zL95jRs6BlA" name="on">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_LqDfE9xgEe6zL95jRs6BlA" name="datesOn" type="_Lo_vINxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LqEGINxgEe6zL95jRs6BlA" name="off">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_LqEGIdxgEe6zL95jRs6BlA" name="datesOff" type="_Lo_vINxgEe6zL95jRs6BlA"/>
+          <ownedParameter xmi:id="_LqEGJNxgEe6zL95jRs6BlA" type="_LkDkwNxgEe6zL95jRs6BlA" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrGn8NxgEe6zL95jRs6BlA" name="" memberEnd="_LrGn8dxgEe6zL95jRs6BlA _Lj9eINxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrGn8dxgEe6zL95jRs6BlA" name="" type="_Lj7o8NxgEe6zL95jRs6BlA" association="_LrGn8NxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrIdIdxgEe6zL95jRs6BlA" name="" memberEnd="_LrIdItxgEe6zL95jRs6BlA _LqKz0NxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrIdItxgEe6zL95jRs6BlA" name="" type="_LjLbANxgEe6zL95jRs6BlA" association="_LrIdIdxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrKSUNxgEe6zL95jRs6BlA" name="" memberEnd="_LrKSUdxgEe6zL95jRs6BlA _LqLa4NxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrKSUdxgEe6zL95jRs6BlA" name="" type="_LjLbANxgEe6zL95jRs6BlA" association="_LrKSUNxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrLgcdxgEe6zL95jRs6BlA" name="" memberEnd="_LrLgctxgEe6zL95jRs6BlA _LqLa4dxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrLgctxgEe6zL95jRs6BlA" name="" type="_LjLbANxgEe6zL95jRs6BlA" association="_LrLgcdxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrMukdxgEe6zL95jRs6BlA" name="" memberEnd="_LrMuktxgEe6zL95jRs6BlA _LqN3INxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrMuktxgEe6zL95jRs6BlA" name="" type="_LjLbANxgEe6zL95jRs6BlA" association="_LrMukdxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrPK0dxgEe6zL95jRs6BlA" name="" memberEnd="_LrPK0txgEe6zL95jRs6BlA _LqPFQNxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrPK0txgEe6zL95jRs6BlA" name="" type="_LjouANxgEe6zL95jRs6BlA" association="_LrPK0dxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrS1MNxgEe6zL95jRs6BlA" name="" memberEnd="_LrS1MdxgEe6zL95jRs6BlA _LqPsUdxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrS1MdxgEe6zL95jRs6BlA" name="" type="_LjouANxgEe6zL95jRs6BlA" association="_LrS1MNxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrTcQdxgEe6zL95jRs6BlA" name="" memberEnd="_LrTcQtxgEe6zL95jRs6BlA _LqSIkNxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrTcQtxgEe6zL95jRs6BlA" name="" type="_LjouANxgEe6zL95jRs6BlA" association="_LrTcQdxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrVRcNxgEe6zL95jRs6BlA" name="" memberEnd="_LrVRcdxgEe6zL95jRs6BlA _LqT9wdxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrVRcdxgEe6zL95jRs6BlA" name="" type="_LjouANxgEe6zL95jRs6BlA" association="_LrVRcNxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrV4gdxgEe6zL95jRs6BlA" name="" memberEnd="_LrV4gtxgEe6zL95jRs6BlA _LqVy8NxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrV4gtxgEe6zL95jRs6BlA" name="" type="_LkDkwNxgEe6zL95jRs6BlA" association="_LrV4gdxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrWfkdxgEe6zL95jRs6BlA" name="" memberEnd="_LrWfktxgEe6zL95jRs6BlA _LqWaAdxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrWfktxgEe6zL95jRs6BlA" name="" type="_LkDkwNxgEe6zL95jRs6BlA" association="_LrWfkdxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LrXtsNxgEe6zL95jRs6BlA" name="" memberEnd="_LrXtsdxgEe6zL95jRs6BlA _LqXoINxgEe6zL95jRs6BlA">
+        <ownedEnd xmi:id="_LrXtsdxgEe6zL95jRs6BlA" name="" type="_LkDkwNxgEe6zL95jRs6BlA" association="_LrXtsNxgEe6zL95jRs6BlA"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_LRbjsNxgEe6zL95jRs6BlA">
+      <eAnnotations xmi:id="_LRhDQNxgEe6zL95jRs6BlA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLLabProfile:TargetLanguage xmi:id="_LRmi0NxgEe6zL95jRs6BlA" base_Package="_Ku2bENxgEe6zL95jRs6BlA">
+    <languageName>java</languageName>
+  </UMLLabProfile:TargetLanguage>
+  <UMLLabProfile:Reference xmi:id="_Lo-hANxgEe6zL95jRs6BlA" base_Element="_Lo8r0NxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LpA9QNxgEe6zL95jRs6BlA" base_Element="_Lo_vINxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LpCycNxgEe6zL95jRs6BlA" base_Element="_LpBkUNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LpDZgNxgEe6zL95jRs6BlA" base_Element="_LpCycdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LpF1wNxgEe6zL95jRs6BlA" base_Element="_LpEAkNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LpISANxgEe6zL95jRs6BlA" base_Element="_LpGc0NxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LpJgINxgEe6zL95jRs6BlA" base_Element="_LpISAdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LpLVUNxgEe6zL95jRs6BlA" base_Element="_LpKHMNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LpNKgNxgEe6zL95jRs6BlA" base_Element="_LpL8YNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LpYwsNxgEe6zL95jRs6BlA" base_Element="_LpYJoNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LphTkNxgEe6zL95jRs6BlA" base_Element="_LpgsgNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_Lps5wNxgEe6zL95jRs6BlA" base_Element="_LprroNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_Lp1coNxgEe6zL95jRs6BlA" base_Element="_Lp01kNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_Lp2qwNxgEe6zL95jRs6BlA" genericsValue="DiscreteActionInterface" base_Element="_Lp2DsNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_Lp4f8NxgEe6zL95jRs6BlA" genericsValue="DiscreteActionInterface" base_Element="_Lp2qwdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_Lp8xYNxgEe6zL95jRs6BlA" genericsValue="Integer" base_Element="_Lp7jQNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_Lp-mkNxgEe6zL95jRs6BlA" genericsValue="Integer" base_Element="_Lp7jQdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_LqAbwNxgEe6zL95jRs6BlA" genericsValue="Integer" base_Element="_Lp7jQtxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_LqCQ8NxgEe6zL95jRs6BlA" genericsValue="Integer" base_Element="_Lp7jQ9xgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_LqFUQNxgEe6zL95jRs6BlA" genericsValue="Integer" base_Element="_LqDfE9xgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_LqGiYNxgEe6zL95jRs6BlA" genericsValue="Integer" base_Element="_LqEGIdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqMB8NxgEe6zL95jRs6BlA" base_Element="_LqLa4dxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqNQENxgEe6zL95jRs6BlA" base_Element="_LqMpANxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqN3IdxgEe6zL95jRs6BlA" base_Element="_LqN3INxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqPsUNxgEe6zL95jRs6BlA" base_Element="_LqPFQNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_LqQ6cNxgEe6zL95jRs6BlA" genericsValue="DiscreteAction" base_Element="_LqPsUdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqRhgNxgEe6zL95jRs6BlA" base_Element="_LqPsUdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Generics xmi:id="_LqTWsNxgEe6zL95jRs6BlA" genericsValue="DiscreteAction" base_Element="_LqSIkNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqT9wNxgEe6zL95jRs6BlA" base_Element="_LqSIkNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqUk0NxgEe6zL95jRs6BlA" base_Element="_LqT9wdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqWaANxgEe6zL95jRs6BlA" base_Element="_LqVy8NxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqXBENxgEe6zL95jRs6BlA" base_Element="_LqWaAdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqYPMNxgEe6zL95jRs6BlA" base_Element="_LqXoINxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqY2QNxgEe6zL95jRs6BlA" base_Element="_LqYPMdxgEe6zL95jRs6BlA">
+    <associatedElement xmi:type="uml:Operation" xmi:id="_LqY2QdxgEe6zL95jRs6BlA" name="getCurrentLapsTime" method="_Lq5zoNxgEe6zL95jRs6BlA">
+      <ownedParameter xmi:id="_LqZdUNxgEe6zL95jRs6BlA" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </associatedElement>
+  </UMLLabProfile:LegacyStyledElement>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_LqarcNxgEe6zL95jRs6BlA" base_Element="_LqaEYNxgEe6zL95jRs6BlA"/>
+  <uml:OpaqueBehavior xmi:id="_Lq5zoNxgEe6zL95jRs6BlA" name="getCurrentLapsTime" specification="_LqY2QdxgEe6zL95jRs6BlA">
+    <ownedParameter xmi:id="_Lq5zodxgEe6zL95jRs6BlA" direction="return">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedParameter>
+    <language>java</language>
+    <body>return this.currentAction.getCurrentLapsTime();&#xD;
+	</body>
+  </uml:OpaqueBehavior>
+  <UMLLabProfile:Reference xmi:id="_LrIdINxgEe6zL95jRs6BlA" base_Element="_LrGn8NxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrJrQNxgEe6zL95jRs6BlA" base_Element="_LrIdIdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrLgcNxgEe6zL95jRs6BlA" base_Element="_LrKSUNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrMukNxgEe6zL95jRs6BlA" base_Element="_LrLgcdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrPK0NxgEe6zL95jRs6BlA" base_Element="_LrMukdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrSOINxgEe6zL95jRs6BlA" base_Element="_LrPK0dxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrTcQNxgEe6zL95jRs6BlA" base_Element="_LrS1MNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrUqYNxgEe6zL95jRs6BlA" base_Element="_LrTcQdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrV4gNxgEe6zL95jRs6BlA" base_Element="_LrVRcNxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrWfkNxgEe6zL95jRs6BlA" base_Element="_LrV4gdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrXGoNxgEe6zL95jRs6BlA" base_Element="_LrWfkdxgEe6zL95jRs6BlA"/>
+  <UMLLabProfile:Reference xmi:id="_LrXtstxgEe6zL95jRs6BlA" base_Element="_LrXtsNxgEe6zL95jRs6BlA"/>
+</xmi:XMI>
