@@ -1,5 +1,5 @@
 package discreteBehaviorSimulator;
 
-public class DiscreteActionSimulator {
+public class LogFormatter {
     
 }
