@@ -1,22 +1,14 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-S
-#src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
-V
-&src/main/java/action/package-info.java,b\2\b2d4f050b491b12e57baef4de506b6a4ffc3ac86
 X
 (src/main/java/action/DiscreteAction.java,a\0\a0a18e3260fac1b72007885642f53f7a3e7bf58f
 f
 6src/main/java/action/DiscreteActionOnOffDependent.java,7\3\734b16ff9d959a10db85c22dd12706615980c7cd
-i
-9src/main/java/discreteBehaviorSimulator/package-info.java,c\1\c10c437c148be89b59e85dede4e08794596202d3
 t
 Dsrc/main/java/discreteBehaviorSimulator/DiscreteActionSimulator.java,f\8\f8ded619607558cb6cb7c603b50d4c0294b90afb
 i
 9src/main/java/discreteBehaviorSimulator/LogFormatter.java,3\c\3c99dc658abfe274ab74622358d2f87ce8c8ba8d
-U
-%src/main/java/timer/package-info.java,b\7\b75504f7bfc293e00527636fab6330967eae5576
 R
 "src/main/java/timer/DateTimer.java,7\8\78be95389f16615ec1ee42431aecd2d7aa51435b
 T
@@ -43,3 +35,13 @@ Z
 *src/test/java/timer/PeriodicTimerTest.java,b\e\be4f65a96cafe8300cd2cea1325df32238341095
 V
 &src/test/java/timer/DateTimerTest.java,a\5\a5427e42f819a1452b94a46ae24616eeadea9bd4
+X
+(src/test/java/timer/MergedTimerTest.java,7\2\726c4e33ad99bbf8af60c7f9b1609797cb166a4d
+Y
+)src/test/java/timer/OneShotTimerTest.java,2\6\26d7862f394c4cb4b911f60843a17a30dc47e409
+X
+(src/test/java/timer/RandomTimerTest.java,7\8\784d63ea2b4d8a2ccaab480bb4f7ecab8c5e7e7e
+]
+-src/test/java/timer/TimeBoundedTimerTest.java,a\5\a58df6a871ca5e3f9f472bc5fda4ebe7554eb5ab
+R
+"src/test/java/timer/TimerTest.java,9\2\926aae8a1a580d2e877f5ae4ec0def8b62ad5b17
