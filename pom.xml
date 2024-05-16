@@ -9,24 +9,27 @@
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
-
-            <!-- Ajoutez le plugin SonarQube -->
+            <!-- SonarQube Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.7.0.1746</version>
+                <version>3.9.1.2184</version>
             </plugin>
-
+            <!-- Maven Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
             </plugin>
-
+            <!-- Maven Site Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.9.1</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- Assurez-vous d'utiliser une version du plugin compatible avec Java 19 -->
+                <configuration>
+                    <source>19</source>
+                    <target>19</target>
+                </configuration>
             </plugin>
 
         </plugins>
@@ -41,14 +44,9 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>backport-util-concurrent</groupId>
-            <artifactId>backport-util-concurrent</artifactId>
-            <version>3.1</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
