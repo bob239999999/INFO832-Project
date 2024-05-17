@@ -115,8 +115,8 @@ class DiscreteActionTest {
         Object object = new SpecificClass();
         Timer timer;
         try {
-            timer = new RandomTimer(RandomTimer.randomDistribution.POISSON, 25);
-            DiscreteAction discreteAction = new DiscreteAction(object, "methodOne", timer);
+            DiscreteAction discreteAction = new DiscreteAction(object, "methodOne", null);
+            discreteAction.spendTime(5);
             assertNull(discreteAction.getCurrentLapsTime());
         } catch (Exception e) {
             e.printStackTrace();
