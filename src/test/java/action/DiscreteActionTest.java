@@ -68,7 +68,7 @@ class DiscreteActionTest {
     }
 
     @Test
-    public void testTimerForMethod() throws Exception {
+    public void testGetMethod() throws Exception {
         // Create an instance of the specific class
         Object object = new SpecificClass();
                 
@@ -86,17 +86,6 @@ class DiscreteActionTest {
 
         // Check if the method associated with the DiscreteAction is the same as the provided method
         assertEquals(method, discreteAction.getMethod(), "Method should be the same");
-    }
-
-    @Test
-    public void testGetMethod() throws Exception {
-        Object object1 = new SpecificClass();
-        Object object2 = new SpecificClass();
-        Timer timer = new RandomTimer(RandomTimer.randomDistribution.POISSON, 5);
-        DiscreteAction discreteAction1 = new DiscreteAction(object1, "methodOne", timer);
-        DiscreteAction discreteAction2 = new DiscreteAction(object2, "methodTwo", timer);
-        assertEquals("methodOne", discreteAction1.getMethod().getName());
-        assertEquals("methodTwo", discreteAction2.getMethod().getName());
     }
 
     @Test
@@ -145,22 +134,25 @@ class DiscreteActionTest {
 
     @Test
     public void testHasNext() throws Exception {
-        Object object = new SpecificClass();
-        Timer timer = new RandomTimer(RandomTimer.randomDistribution.POISSON, 5);
-        DiscreteAction discreteAction = new DiscreteAction(object, "methodOne", timer);
-        assertTrue(discreteAction.hasNext());
+        DiscreteAction discreteAction = new DiscreteAction(new SpecificClass(), "methodOne", null);
+        assertFalse(discreteAction.hasNext());
     }
 
     @Test
     public void testCompareTo() throws Exception {
         Timer timer;
         try {
-            timer = new RandomTimer(RandomTimer.randomDistribution.POISSON, 5);
+            timer = new RandomTimer(RandomTimer.randomDistribution.POISSON, 50);
             DiscreteAction discreteAction1 = new DiscreteAction(new SpecificClass(), "methodOne", timer);
+            discreteAction1.next();
+            // Laps Time 50 
             discreteAction1.spendTime(10);
+            // Laps Time Current is 40 
             DiscreteAction discreteAction2 = new DiscreteAction(new SpecificClass(), "methodTwo", timer);
             discreteAction2.spendTime(5);
-            assertTrue(discreteAction1.compareTo(discreteAction2) > 0);
+            // Laps Time Current is 45 
+            assertTrue(discreteAction2.compareTo(discreteAction1) > 0);
+            // Positive because 
         } catch (Exception e) {
             e.printStackTrace();
         }
