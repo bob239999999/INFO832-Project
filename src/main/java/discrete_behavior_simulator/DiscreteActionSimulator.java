@@ -2,7 +2,6 @@
 package discrete_behavior_simulator;
 
 import java.lang.reflect.Method;
-import java.time.Clock;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.logging.ConsoleHandler;
@@ -145,7 +144,7 @@ public class DiscreteActionSimulator implements Runnable {
         DiscreteActionInterface a = this.actionsList.remove(0);
         if (a.hasNext()) {
             a = a.next();
-            this.actionsList.addElement(a);
+            this.actionsList.add(a);
     
             String logMessage;
             if (this.globalTime != null) {
