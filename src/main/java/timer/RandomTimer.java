@@ -11,11 +11,9 @@ import java.util.Random;
 
 public class RandomTimer implements Timer {
 
-    public static enum randomDistribution {
+    public enum randomDistribution {
         POISSON, EXP, POSIBILIST, GAUSSIAN;
     }
-
-    //private static String randomDistributionString[] = {"POISSON", "EXP", "POSIBILIST", "GAUSSIAN"};
 
     private Random r = new Random();
     private randomDistribution distribution;
@@ -23,11 +21,10 @@ public class RandomTimer implements Timer {
     private double mean;
     private double lolim;
     private double hilim;
-    //private int width;
 
 
     public static randomDistribution string2Distribution(String distributionName){
-        return RandomTimer.randomDistribution.valueOf(RandomTimer.randomDistribution.class, distributionName.toUpperCase());
+        return Enum.valueOf(RandomTimer.randomDistribution.class, distributionName.toUpperCase());
     }
     public static String distribution2String(randomDistribution distribution){
         return distribution.name();
