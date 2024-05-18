@@ -1,16 +1,16 @@
 package timer;
 
 import java.util.Iterator;
-import java.util.TreeSet;
-import java.util.Vector;
+import java.util.SortedSet;
+import java.util.ArrayList;
 
 public class DateTimer  implements Timer {
 
-    Vector<Integer> lapsTimes;
+    ArrayList<Integer> lapsTimes;
     Iterator<Integer> it;
 
-    public DateTimer(TreeSet<Integer> dates) {
-        this.lapsTimes = new Vector<Integer>();
+    public DateTimer(SortedSet<Integer> dates) {
+        this.lapsTimes = new ArrayList<>();
         Integer last;
         Integer current=0;
 
@@ -24,8 +24,8 @@ public class DateTimer  implements Timer {
 
     }
 
-    public DateTimer(Vector<Integer> lapsTimes) {
-        this.lapsTimes = new Vector<Integer>(lapsTimes);
+    public DateTimer(ArrayList<Integer> lapsTimes) {
+        this.lapsTimes = new ArrayList<>(lapsTimes);
         this.it = this.lapsTimes.iterator();
     }
 

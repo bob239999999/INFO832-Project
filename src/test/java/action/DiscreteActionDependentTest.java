@@ -92,4 +92,49 @@ public class DiscreteActionDependentTest {
         assertEquals("open", actionDependent.getMethod().getName());
     }
 
+	@Test
+    public void testConstruction() {
+        // Check initial action
+        assertEquals(door.getClass(), actionDependent.getObject().getClass());
+        assertEquals("open", actionDependent.getMethod().getName());
+    }
+
+    @Test
+    public void testAddDependence1() {
+        // Simulate the actions
+        actionDependent.nextMethod();
+        assertEquals(light1.getClass(), actionDependent.getObject().getClass());
+        assertEquals("on", actionDependent.getMethod().getName());
+    }
+
+    @Test
+    public void testAddDependence2() {
+        // Simulate the actions
+        actionDependent.nextMethod();
+        actionDependent.nextMethod();
+        assertEquals(light2.getClass(), actionDependent.getObject().getClass());
+        assertEquals("on", actionDependent.getMethod().getName());
+    }
+
+	/* 
+	@Test
+	public void testGetCurrentLapsTime() {
+		// Initial state: base action
+		actionDependent.nextMethod(); // door -> light1
+		assertEquals(480, actionDependent.getCurrentLapsTime());
+
+		// Advance to the first dependent action
+		actionDependent.nextMethod(); // door -> light1
+		assertEquals(10, actionDependent.getCurrentLapsTime());
+
+		// Advance to the second dependent action
+		actionDependent.nextMethod(); // light1 -> light2
+		assertEquals(5, actionDependent.getCurrentLapsTime());
+
+		// Cycle back to the base action
+		actionDependent.nextMethod(); // light2 -> door
+		assertEquals(480, actionDependent.getCurrentLapsTime());
+	}
+	*/
+
 }
