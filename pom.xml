@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -7,6 +6,17 @@
     <groupId>org.example</groupId>
     <artifactId>INFO832-Project</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.host.url>http://gpu-epu.univ-savoie.fr:9000</sonar.host.url>
+        <sonar.projectKey>BBCCKS</sonar.projectKey>
+        <sonar.login>groupeBBCCKS</sonar.login>
+        <sonar.password>BBCCKS</sonar.password>
+    </properties>
+
     <build>
         <plugins>
             <!-- SonarQube Plugin -->
@@ -21,27 +31,19 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
             </plugin>
-            <!-- Maven Site Plugin -->
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version> <!-- Assurez-vous d'utiliser une version du plugin compatible avec Java 19 -->
+                <version>3.8.1</version>
                 <configuration>
                     <source>19</source>
                     <target>19</target>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-    <properties>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.host.url>http://gpu-epu.univ-savoie.fr:9000</sonar.host.url>
-        <sonar.projectKey>BBCCKS</sonar.projectKey>
-        <sonar.login>groupeBBCCKS</sonar.login>
-    </properties>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -55,6 +57,11 @@
             <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>backport-util-concurrent</groupId>
+            <artifactId>backport-util-concurrent</artifactId>
+            <version>3.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
 </project>
