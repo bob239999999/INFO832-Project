@@ -4,6 +4,7 @@ package action;
 import timer.Timer;
 
 import java.lang.reflect.Method;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -85,7 +86,7 @@ public class DiscreteAction implements DiscreteActionInterface {
         if(this.lapsTime < c.getCurrentLapsTime()){
             return -1;
         }
-        if(this.lapsTime == c.getCurrentLapsTime()){
+        if(Objects.equals(this.lapsTime, c.getCurrentLapsTime())){
             return 0;
         }
         return 0;
