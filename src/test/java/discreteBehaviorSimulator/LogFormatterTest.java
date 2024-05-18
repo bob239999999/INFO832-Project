@@ -13,6 +13,8 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import discrete_behavior_simulator.LogFormatter;
+
 public class LogFormatterTest {
 
     @Test
