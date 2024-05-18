@@ -73,21 +73,23 @@ public class DiscreteActionDependentTest {
     }
 
 	@Test
-    public void testSpendTime() {
-        // Initial time should be at 8:00 AM for the door
-        actionDependent.spendTime(480); // 8:00 AM
-		actionDependent.nextMethod();
-        assertEquals(0, actionDependent.getCurrentLapsTime());
+    public void testAddDependence() {
+        // Check initial action
+        assertEquals(door.getClass(), actionDependent.getObject().getClass());
+        assertEquals("open", actionDependent.getMethod().getName());
 
-        // Light 1 should turn on at 8:10 AM
+        // Simulate the actions
         actionDependent.nextMethod();
-        actionDependent.spendTime(10); // 8:10 AM
-        assertEquals(0, actionDependent.getCurrentLapsTime());
+        assertEquals(light1.getClass(), actionDependent.getObject().getClass());
+        assertEquals("on", actionDependent.getMethod().getName());
 
-        // Light 2 should turn on at 8:15 AM
         actionDependent.nextMethod();
-        actionDependent.spendTime(5); // 8:15 AM
-        assertEquals(0, actionDependent.getCurrentLapsTime());
+        assertEquals(light2.getClass(), actionDependent.getObject().getClass());
+        assertEquals("on", actionDependent.getMethod().getName());
+
+        actionDependent.nextMethod();
+        assertEquals(door.getClass(), actionDependent.getObject().getClass());
+        assertEquals("open", actionDependent.getMethod().getName());
     }
 
 }
