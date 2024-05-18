@@ -1,5 +1,5 @@
 
-package discreteBehaviorSimulator;
+package main.discreteBehaviorSimulator;
 
 import java.lang.reflect.Method;
 import java.util.Collections;
@@ -25,7 +25,7 @@ public class DiscreteActionSimulator implements Runnable {
 
     private Clock globalTime;
 
-    private Vector<DiscreteActionInterface> actionsList = new Vector<>();
+    private ArrayList<DiscreteActionInterface> actionsList = new ArrayList<>();
 
     private int nbLoop;
     private int step;
@@ -38,7 +38,6 @@ public class DiscreteActionSimulator implements Runnable {
 
         // Start logger
         this.logger = Logger.getLogger("DAS");
-        //this.logger = Logger.getLogger("APP");
         this.logger.setLevel(Level.ALL);
         this.logger.setUseParentHandlers(true);
         try{
@@ -83,9 +82,6 @@ public class DiscreteActionSimulator implements Runnable {
         }
     }
 	
-	/*public void addTemporalRule(TemporalRule r){
-		
-	}*/
 
     /**
      * @return the laps time before the next action
@@ -97,79 +93,85 @@ public class DiscreteActionSimulator implements Runnable {
     /**
      * @return laps time of the running action
      */
-    private int runAction(){
-        // Run the first action
-        int sleepTime = 0;
+    private int runAction() {
+	    // Utilisation d'un modèle de chaîne de caractères pour les messages de journalisation
+	    final String LOG_TEMPLATE_WITH_TIME = "[DAS] run action %s on %s:%d at %d after %d time units\n";
+	    final String LOG_TEMPLATE_WITHOUT_TIME = "[DAS] run action %s on %s:%d after %d time units\n";
+	
+	    // Run the first action
+	    int sleepTime = 0;
+	    
+	    DiscreteActionInterface currentAction = this.actionsList.get(0);
+	    Object o = currentAction.getObject();
+	    Method m = currentAction.getMethod();
+	    sleepTime = currentAction.getCurrentLapsTime();
+	    try {
+	        // Thread.sleep(sleepTime); // Real time can be very slow
+	        Thread.yield();
+	        // Thread.sleep(1000); // Wait message bus sends
+	        if (this.globalTime != null) {
+	            this.globalTime.increase(sleepTime);
+	        }
+	        m.invoke(o);
+	        
+	        // Utilisation de String.format pour formater le message de journalisation, remplaçant ainsi la concaténation de chaînes
+	        String logMessage;
+	        if (this.globalTime != null) {
+	            logMessage = String.format(LOG_TEMPLATE_WITH_TIME, m.getName(), o.getClass().getName(), o.hashCode(), this.globalTime.getTime(), sleepTime);
+	        } else {
+	            logMessage = String.format(LOG_TEMPLATE_WITHOUT_TIME, m.getName(), o.getClass().getName(), o.hashCode(), sleepTime);
+	        }
+	        this.logger.log(Level.FINE, logMessage); // Remplacement de System.out.println par une méthode de journalisation
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return sleepTime;
+	}
 
+    private void updateTimes(int runningTimeOf1stCapsul) {
+    // Utilisation d'un modèle de chaîne de caractères pour les messages de journalisation
+    final String LOG_TEMPLATE_WITH_TIME = "[DAS] reset action %s on %s:%d at %d to %d time units\n";
+    final String LOG_TEMPLATE_WITHOUT_TIME = "[DAS] reset action %s on %s:%d to %d time units\n";
 
-        // TODO Manage parallel execution !
-        DiscreteActionInterface currentAction = this.actionsList.get(0);
-        Object o = currentAction.getObject();
-        Method m = currentAction.getMethod();
-        sleepTime = currentAction.getCurrentLapsTime();
-
-        try {
-            //Thread.sleep(sleepTime); // Real time can be very slow
-            Thread.yield();
-            //Thread.sleep(1000); // Wait message bus sends
-            if(this.globalTime!=null) {
-                this.globalTime.increase(sleepTime);
-            }
-            m.invoke(o);
-            if(this.globalTime!=null) {
-                this.logger.log(Level.FINE, "[DAS] run action " + m.getName() + " on " + o.getClass().getName() + ":" + o.hashCode() + " at " + this.globalTime.getTime() + " after " + sleepTime + " time units\n");
-                System.out.println("[DAS] run action " + m.getName() + " on " + o.getClass().getName() + ":" + o.hashCode() + " at " + this.globalTime.getTime() + " after " + sleepTime + " time units\n");
-            }else {
-                this.logger.log(Level.FINE, "[DAS] run action " + m.getName() + " on " + o.getClass().getName() + ":" + o.hashCode() + " after " + sleepTime + " time units\n");
-                System.out.println("[DAS] run action " + m.getName() + " on " + o.getClass().getName() + ":" + o.hashCode() + " after " + sleepTime + " time units\n");
-
-            }
-
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return sleepTime;
+    // update time laps of all actions
+    for (int i = 1; i < this.actionsList.size(); i++) {
+        int d = this.actionsList.get(i).getLapsTime();
+        this.actionsList.get(i).setLapsTemps(d - runningTimeOf1stCapsul);
+        this.actionsList.get(i).spendTime(runningTimeOf1stCapsul);
     }
 
-    private void updateTimes(int runningTimeOf1stCapsul){
-
-        // update time laps off all actions
-        for(int i=1 ; i < this.actionsList.size(); i++){
-            //int d = this.actionsList.get(i).getLapsTime();
-            //this.actionsList.get(i).setLapsTemps(d- runningTimeOf1stCapsul);
-            this.actionsList.get(i).spendTime(runningTimeOf1stCapsul);
-        }
-
-        // get new time lapse of first action
-		/*if(this.globalTime == null) {
-			this.actionsList.get(0).updateTimeLaps();
-		}else {	
-			this.actionsList.get(0).updateTimeLaps(this.globalTime.getTime());
-		}
-		
-		// remove the action if no more lapse time is defined
-		if(this.actionsList.get(0).getLastLapsTime() == null) {
-			this.actionsList.remove(0);
-		}else {
-			// resort the list
-			Collections.sort(this.actionsList);
-		}*/
-
-        DiscreteActionInterface a = this.actionsList.remove(0);
-        if(a.hasNext()) {
-            a = a.next();
-            this.actionsList.addElement(a);
-            if(this.globalTime!=null) {
-                this.logger.log(Level.FINE, "[DAS] reset action " + a.getMethod().getName() + " on " + a.getObject().getClass().getName() + ":" + a.getObject().hashCode() + " at " + this.globalTime.getTime() + " to " + a.getCurrentLapsTime() + " time units\n");
-                System.out.println("[DAS] reset action " + a.getMethod().getName() + " on " + a.getObject().getClass().getName() + ":" + a.getObject().hashCode() + " at " + this.globalTime.getTime() + " to " + a.getCurrentLapsTime() + " time units\n");
-            }else {
-                this.logger.log(Level.FINE, "[DAS] reset action " + a.getMethod().getName() + " on " + a.getObject().getClass().getName() + ":" + a.getObject().hashCode() + " to " + a.getCurrentLapsTime() + " time units\n");
-                System.out.println("[DAS] reset action " + a.getMethod().getName() + " on " + a.getObject().getClass().getName() + ":" + a.getObject().hashCode() + " to " + a.getCurrentLapsTime() + " time units\n");
-            }
-            Collections.sort(this.actionsList);
-        }
+    // get new time lapse of first action
+    if(this.globalTime == null) {
+        this.actionsList.get(0).updateTimeLaps();
+    }else {
+        this.actionsList.get(0).updateTimeLaps(this.globalTime.getTime());
     }
+
+    // remove the action if no more lapse time is defined
+    if(this.actionsList.get(0).getLastLapsTime() == null) {
+        this.actionsList.remove(0);
+    }else {
+        // resort the list
+        Collections.sort(this.actionsList);
+    }
+
+    DiscreteActionInterface a = this.actionsList.remove(0);
+    if (a.hasNext()) {
+        a = a.next();
+        this.actionsList.addElement(a);
+
+        String logMessage;
+        if (this.globalTime != null) {
+            logMessage = String.format(LOG_TEMPLATE_WITH_TIME, a.getMethod().getName(), a.getObject().getClass().getName(), a.getObject().hashCode(), this.globalTime.getTime(), a.getCurrentLapsTime());
+        } else {
+            logMessage = String.format(LOG_TEMPLATE_WITHOUT_TIME, a.getMethod().getName(), a.getObject().getClass().getName(), a.getObject().hashCode(), a.getCurrentLapsTime());
+        }
+        
+        this.logger.log(Level.FINE, logMessage); // Remplacement de System.out.println par une méthode de journalisation
+        Collections.sort(this.actionsList);
+    }
+}
 
 
     public void run() {
