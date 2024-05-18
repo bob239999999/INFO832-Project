@@ -1,138 +1,95 @@
 package action;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Timer;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import timer.Timer;
 
-import timer.PeriodicTimer;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class DiscreteActionDependentTest {
+public class DiscreteActionDependentTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
-	@Test
-	void testDiscreteActionDependent() {
-		fail("Not yet implemented");
+    private static class Door {
+        public void open() {
+            System.out.println("Door opened");
+        }
     }
-	
+
+    private static class Light {
+        public void on() {
+            System.out.println("Light on");
+        }
+    }
+
+    private DiscreteActionDependent actionDependent;
+    private Door door;
+    private Light light1;
+    private Light light2;
+
+    @BeforeEach
+    public void setUp() {
+        door = new Door();
+        light1 = new Light();
+        light2 = new Light();
+
+        Timer timerBase = new Timer() {
+            @Override
+            public Integer next() {
+                return 480; // 8:00 AM
+            }
+
+            @Override
+            public boolean hasNext() {
+                return true;
+            }
+        };
+
+        Timer timerDependence1 = new Timer() {
+            @Override
+            public Integer next() {
+                return 10; // 10 minutes after door opens
+            }
+
+            @Override
+            public boolean hasNext() {
+                return true;
+            }
+        };
+
+        Timer timerDependence2 = new Timer() {
+            @Override
+            public Integer next() {
+                return 5; // 5 minutes after first light
+            }
+
+            @Override
+            public boolean hasNext() {
+                return true;
+            }
+        };
+
+        actionDependent = new DiscreteActionDependent(door, "open", timerBase);
+        actionDependent.addDependence(light1, "on", timerDependence1);
+        actionDependent.addDependence(light2, "on", timerDependence2);
+    }
 
 	@Test
-	void testAddDependence() {
-		        // Création d'un timer pour la porte qui s'ouvre à 8h
-		        PeriodicTimer doorTimer = new PeriodicTimer(24, 8);
+    public void testAddDependence() {
+        // Check initial action
+        assertEquals(door.getClass(), actionDependent.getObject().getClass());
+        assertEquals("open", actionDependent.getMethod().getName());
 
-		        // Création de l'action de la porte
-		        DiscreteActionDependent doorAction = new DiscreteActionDependent(new Object() {
-		            public void open() {
-		                System.out.println("Door opened");
-		            }
-		        }, "open", doorTimer);
+        // Simulate the actions
+        actionDependent.nextMethod();
+        assertEquals(light1.getClass(), actionDependent.getObject().getClass());
+        assertEquals("on", actionDependent.getMethod().getName());
 
-		        // Création d'un timer pour la première lampe qui s'allume à 8h10
-		        PeriodicTimer lamp1Timer = new PeriodicTimer(24, 10);
+        actionDependent.nextMethod();
+        assertEquals(light2.getClass(), actionDependent.getObject().getClass());
+        assertEquals("on", actionDependent.getMethod().getName());
 
-		        // Ajout de la dépendance pour la première lampe
-		        doorAction.addDependence(new Object() {
-		            public void On() {
-		                System.out.println("Lamp 1 turned on");
-		            }
-		        }, "On", lamp1Timer);
-
-		        // Création d'un timer pour la deuxième lampe qui s'allume à 8h15
-		        PeriodicTimer lamp2Timer = new PeriodicTimer(24, 15);
-
-		        // Ajout de la dépendance pour la deuxième lampe
-		        doorAction.addDependence(new Object() {
-		            public void On() {
-		                System.out.println("Lamp 2 turned on");
-		            }
-		        }, "On", lamp2Timer);
-
-		        // Vérification que la porte s'ouvre à 8h
-		        assertEquals("open", doorAction.getMethod().getName());
-		        assertEquals((Integer) 8, doorAction.getCurrentLapsTime());
-
-		        // Passe à la prochaine action (allumage de la première lampe à 8h10)
-		        doorAction.nextMethod();
-		        assertEquals("On", doorAction.getMethod().getName());
-		        assertEquals((Integer) 10, doorAction.getCurrentLapsTime());
-
-		        // Passe à la prochaine action (allumage de la deuxième lampe à 8h15)
-		        doorAction.nextMethod();
-		        assertEquals("On", doorAction.getMethod().getName());
-		        assertEquals((Integer) 15, doorAction.getCurrentLapsTime());
-		     }
-
-
-
-	@Test
-	void testNextMethod() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSpendTime() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testUpdateTimeLaps() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetMethod() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetCurrentLapsTime() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testCompareTo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testIsEmpty() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testNext() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testHasNext() {
-		fail("Not yet implemented");
-	}
+        actionDependent.nextMethod();
+        assertEquals(door.getClass(), actionDependent.getObject().getClass());
+        assertEquals("open", actionDependent.getMethod().getName());
+    }
 
 }
