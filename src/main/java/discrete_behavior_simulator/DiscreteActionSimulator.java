@@ -1,5 +1,5 @@
 
-package discreteBehaviorSimulator;
+package discrete_behavior_simulator;
 
 import java.lang.reflect.Method;
 import java.util.Collections;
