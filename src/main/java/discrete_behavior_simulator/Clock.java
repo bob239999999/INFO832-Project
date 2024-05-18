@@ -1,5 +1,6 @@
 package discrete_behavior_simulator;
 
+import exceptions.UnexpectedTimeChangeException;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -53,16 +54,7 @@ public class Clock {
         }
     }
     
-    public class UnexpectedTimeChangeException extends Exception {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-
-		public UnexpectedTimeChangeException(String message) {
-			super(message);
-		}
-	}
+    
 	public void increase(int time) throws UnexpectedTimeChangeException {
 
 		this.lockWriteAccess();
