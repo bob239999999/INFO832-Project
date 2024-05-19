@@ -95,7 +95,7 @@ public class DiscreteActionSimulator implements Runnable {
      * @return laps time of the running action
      */
     private int runAction() {
-        // Utilisation d'un modèle de chaîne de caractères pour les messages de journalisation
+        // Using a string pattern for logging messages
         final String LOG_TEMPLATE_WITH_TIME = "[DAS] run action %s on %s:%d at %d after %d time units\n";
         final String LOG_TEMPLATE_WITHOUT_TIME = "[DAS] run action %s on %s:%d after %d time units\n";
     
@@ -114,14 +114,14 @@ public class DiscreteActionSimulator implements Runnable {
             }
             m.invoke(o);
             
-            // Utilisation de String.format pour formater le message de journalisation, remplaçant ainsi la concaténation de chaînes
+            // Using String.format to format the logging message, replacing string concatenation
             String logMessage;
             if (this.globalTime != null) {
                 logMessage = String.format(LOG_TEMPLATE_WITH_TIME, m.getName(), o.getClass().getName(), o.hashCode(), this.globalTime.getTime(), sleepTime);
             } else {
                 logMessage = String.format(LOG_TEMPLATE_WITHOUT_TIME, m.getName(), o.getClass().getName(), o.hashCode(), sleepTime);
             }
-            this.logger.log(Level.FINE, logMessage); // Remplacement de System.out.println par une méthode de journalisation
+            this.logger.log(Level.FINE, logMessage); // Replacing System.out.println with a logging method
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -131,7 +131,7 @@ public class DiscreteActionSimulator implements Runnable {
 
 
     private void updateTimes(int runningTimeOf1stCapsul) {
-        // Utilisation d'un modèle de chaîne de caractères pour les messages de journalisation
+        // Using a string pattern for logging messages
         final String LOG_TEMPLATE_WITH_TIME = "[DAS] reset action %s on %s:%d at %d to %d time units\n";
         final String LOG_TEMPLATE_WITHOUT_TIME = "[DAS] reset action %s on %s:%d to %d time units\n";
     
@@ -153,7 +153,7 @@ public class DiscreteActionSimulator implements Runnable {
                 logMessage = String.format(LOG_TEMPLATE_WITHOUT_TIME, a.getMethod().getName(), a.getObject().getClass().getName(), a.getObject().hashCode(), a.getCurrentLapsTime());
             }
             
-            this.logger.log(Level.FINE, logMessage); // Remplacement de System.out.println par une méthode de journalisation
+            this.logger.log(Level.FINE, logMessage); // Replacing System.out.println with a logging method
             Collections.sort(this.actionsList);
         }
     }
