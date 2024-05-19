@@ -21,8 +21,6 @@ public class DiscreteAction implements DiscreteActionInterface {
 
 
     private Timer timmer;				// timer provides new lapsTime
-    //private TreeSet<Integer> dates;	// obsolete, managed in timer
-    //private Vector<Integer> lapsTimes;// obsolete, managed in timer
     private Integer lapsTime; 			// waiting time (null if never used)
 
     private Logger logger;
