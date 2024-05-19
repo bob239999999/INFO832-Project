@@ -17,9 +17,9 @@ class DateTimerTest {
 
         DateTimer timer = new DateTimer(dates);
 
-        assertEquals(0, timer.next(), "Le premier intervalle doit être de 0");
-        assertEquals(3, timer.next(), "Le deuxième intervalle doit être de 3");
-        assertEquals(3, timer.next(), "Le troisième intervalle doit être de 3");
+        assertEquals(0, timer.next(), "First interval must be 0");
+        assertEquals(3, timer.next(), "Second interval must be 3");
+        assertEquals(3, timer.next(), "Third interval must be 3");
     }
 
     @Test
@@ -29,10 +29,10 @@ class DateTimerTest {
         dates.add(15);
         DateTimer timer = new DateTimer(dates);
 
-        timer.next(); // Première invocation
-        timer.next(); // Deuxième invocation
+        timer.next(); // First invocation
+        timer.next(); // Second invocation
 
-        assertThrows(NoSuchElementException.class, timer::next, "Une NoSuchElementException devrait être levée lorsque plus aucun intervalle n'est disponible");
+        assertThrows(NoSuchElementException.class, timer::next, "NoSuchElementException should be raised when any interval is no longer available.");
     }
 
     @Test
@@ -40,8 +40,8 @@ class DateTimerTest {
         TreeSet<Integer> dates = new TreeSet<>();
         DateTimer timer = new DateTimer(dates);
 
-        assertFalse(timer.hasNext(), "Le timer ne doit pas avoir de prochain élément");
-        assertThrows(NoSuchElementException.class, timer::next, "Une NoSuchElementException devrait être levée pour une liste vide");
+        assertFalse(timer.hasNext(), "Timer must not have a next element.");
+        assertThrows(NoSuchElementException.class, timer::next, "NoSuchElementException should be raised for an empty list.");
     }
 
     @Test
@@ -54,10 +54,10 @@ class DateTimerTest {
 
         DateTimer timer = new DateTimer(dates);
 
-        assertEquals(1, timer.next(), "Le premier intervalle doit être de 1");
-        assertEquals(3, timer.next(), "Le deuxième intervalle doit être de 3");
-        assertEquals(6, timer.next(), "Le troisième intervalle doit être de 6");
-        assertEquals(5, timer.next(), "Le quatrième intervalle doit être de 5");
+        assertEquals(1, timer.next(), "First interval must be 1");
+        assertEquals(3, timer.next(), "Second interval must be 3");
+        assertEquals(6, timer.next(), "Third interval must be 6");
+        assertEquals(5, timer.next(), "Fourth interval must be 5");
     }
 
     @Test
@@ -69,9 +69,9 @@ class DateTimerTest {
 
         DateTimer timer = new DateTimer(lapsTimes);
 
-        assertEquals(2, timer.next(), "Le premier intervalle doit être de 2");
-        assertEquals(3, timer.next(), "Le deuxième intervalle doit être de 3");
-        assertEquals(5, timer.next(), "Le troisième intervalle doit être de 5");
+        assertEquals(2, timer.next(), "First interval must be 2");
+        assertEquals(3, timer.next(), "Second interval must be 3");
+        assertEquals(5, timer.next(), "Third interval must be 5");
     }
 
     @Test
@@ -81,9 +81,9 @@ class DateTimerTest {
 
         DateTimer timer = new DateTimer(dates);
 
-        assertEquals(5, timer.next(), "L'intervalle unique doit être de 5");
-        assertFalse(timer.hasNext(), "Le timer ne doit plus avoir de prochain élément");
-        assertThrows(NoSuchElementException.class, timer::next, "Une NoSuchElementException devrait être levée après l'unique élément");
+        assertEquals(5, timer.next(), "The unique interval must be 5");
+        assertFalse(timer.hasNext(), "Timer should no longer have any element.");
+        assertThrows(NoSuchElementException.class, timer::next, "NoSuchElementException should be raised after the unique element.");
     }
 
     @Test
@@ -96,10 +96,10 @@ class DateTimerTest {
 
         DateTimer timer = new DateTimer(dates);
 
-        assertEquals(2, timer.next(), "Le premier intervalle doit être de 2");
-        assertEquals(2, timer.next(), "Le deuxième intervalle doit être de 2");
-        assertEquals(3, timer.next(), "Le troisième intervalle doit être de 3");
-        assertEquals(4, timer.next(), "Le quatrième intervalle doit être de 4");
-        assertFalse(timer.hasNext(), "Le timer ne doit plus avoir de prochain élément");
+        assertEquals(2, timer.next(), "First interval must be 2");
+        assertEquals(2, timer.next(), "Second interval must 2");
+        assertEquals(3, timer.next(), "Third interval must be 3");
+        assertEquals(4, timer.next(), "Fourth interval must be 4");
+        assertFalse(timer.hasNext(), "Timer should no longer have any element.");
     }
 }

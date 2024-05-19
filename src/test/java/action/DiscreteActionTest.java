@@ -26,7 +26,7 @@ class DiscreteActionTest {
         }
     }
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         Object object = new SpecificClass();
         Timer timer;
         try {
@@ -48,7 +48,7 @@ class DiscreteActionTest {
     }
 
     @Test
-    public void testConstructorException() throws Exception {
+    void testConstructorException() throws Exception {
         Object object = new SpecificClass();
         Timer timer = new RandomTimer(RandomTimer.randomDistribution.POISSON, 5);
         
@@ -68,7 +68,7 @@ class DiscreteActionTest {
     }
 
     @Test
-    public void testGetMethod() throws Exception {
+    void testGetMethod() throws Exception {
         // Create an instance of the specific class
         Object object = new SpecificClass();
                 
@@ -89,7 +89,7 @@ class DiscreteActionTest {
     }
 
     @Test
-    public void testSpendTime() {
+    void testSpendTime() {
         // Step 1: Create a DiscreteAction object with a specified initial lapsTime
         Object object = new SpecificClass();
         Timer timer;
@@ -111,7 +111,7 @@ class DiscreteActionTest {
 
 
     @Test
-    public void testSpendTimeNull() {
+    void testSpendTimeNull() {
         Object object = new SpecificClass();
         Timer timer;
         try {
@@ -124,7 +124,7 @@ class DiscreteActionTest {
     }
 
     @Test
-    public void testGetCurrentLapTime() throws Exception {
+    void testGetCurrentLapTime() throws Exception {
         Object object = new SpecificClass();
         Timer timer = new RandomTimer(RandomTimer.randomDistribution.POISSON, 5);
         DiscreteAction discreteAction = new DiscreteAction(object, "methodOne", timer);
@@ -133,13 +133,13 @@ class DiscreteActionTest {
     }
 
     @Test
-    public void testHasNext() throws Exception {
+    void testHasNext() throws Exception {
         DiscreteAction discreteAction = new DiscreteAction(new SpecificClass(), "methodOne", null);
         assertFalse(discreteAction.hasNext());
     }
 
     @Test
-    public void testCompareTo() throws Exception {
+    void testCompareTo() throws Exception {
         Timer timer;
         try {
             timer = new RandomTimer(RandomTimer.randomDistribution.POISSON, 50);
@@ -159,7 +159,7 @@ class DiscreteActionTest {
     }
 
     @Test
-    public void testGetMethodBlackBox() throws Exception {
+    void testGetMethodBlackBox() throws Exception {
         Object object = new SpecificClass();
         Timer timer = new RandomTimer(RandomTimer.randomDistribution.POISSON, 5);
         DiscreteAction discreteAction = new DiscreteAction(object, "methodOne", timer);
