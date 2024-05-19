@@ -38,12 +38,10 @@ public class DiscreteActionSimulator implements Runnable {
 
         // Start logger
         this.logger = Logger.getLogger("DAS");
-        //this.logger = Logger.getLogger("APP");
         this.logger.setLevel(Level.ALL);
         this.logger.setUseParentHandlers(true);
         try{
             this.logFile = new FileHandler(this.getClass().getName() + ".log");
-            //this.logFile.setFormatter(new SimpleFormatter());
             this.logFile.setFormatter(new LogFormatter());
             this.logConsole = new ConsoleHandler();
         }catch(Exception e){
