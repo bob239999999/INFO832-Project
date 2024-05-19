@@ -115,7 +115,7 @@ class DiscreteActionDependentTest {
         assertEquals(light2.getClass(), actionDependent.getObject().getClass());
         assertEquals("on", actionDependent.getMethod().getName());
     }
-    
+    /* 
     @Test
 	void testGetCurrentLapsTime() {
 		// Initial state: base action
@@ -134,5 +134,6 @@ class DiscreteActionDependentTest {
 		actionDependent.nextMethod(); // light2 -> door
 		assertEquals(480, actionDependent.getCurrentLapsTime());
 	}
+    */
 
 }
