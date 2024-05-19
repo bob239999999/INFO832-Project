@@ -2,6 +2,8 @@ package timer;
 
 import java.util.Random;
 
+import exceptions_custom.BadTimerConstructorException;
+
 /**
  * @author Flavien Vernier
  *
@@ -34,39 +36,41 @@ public class RandomTimer implements Timer {
      * @param param constraint
      * @throws Exception
      */
-    public RandomTimer(randomDistribution distribution, double param) throws Exception{
-        if(distribution == randomDistribution.EXP ){
+    public RandomTimer(randomDistribution distribution, double param) throws BadTimerConstructorException {
+        if (distribution == randomDistribution.EXP) {
             this.distribution = distribution;
             this.rate = param;
-            this.mean = 1/param;
+            this.mean = 1 / param;
             this.lolim = 0;
             this.hilim = Double.POSITIVE_INFINITY;
-        }else if(distribution == randomDistribution.POISSON){
+        } else if (distribution == randomDistribution.POISSON) {
             this.distribution = distribution;
             this.rate = Double.NaN;
             this.mean = param;
             this.lolim = 0;
             this.hilim = Double.POSITIVE_INFINITY;
-        }else{
-            throw new Exception("Bad Timer constructor for selected distribution");
-        }
-    }
-    /**
-     * @param min/max constraint
-     * @throws Exception
-     */
-    public RandomTimer(randomDistribution distribution, int lolim, int hilim) throws Exception{
-        if(distribution == randomDistribution.POSIBILIST || distribution == randomDistribution.GAUSSIAN){
-            this.distribution = distribution;
-            this.mean = lolim + (hilim - lolim)/2;
-            this.rate = Double.NaN;
-            this.lolim = lolim;
-            this.hilim = hilim;
-        }else{
-            throw new Exception("Bad Timer constructor for selected distribution");
+        } else {
+            throw new BadTimerConstructorException("Bad Timer constructor for selected distribution");
         }
     }
 
+    /**
+     * @param min/max constraint
+     * @throws BadTimerConstructorException
+     */
+    public RandomTimer(randomDistribution distribution, int lolim, int hilim) throws BadTimerConstructorException {
+        if (distribution == randomDistribution.POSIBILIST || distribution == randomDistribution.GAUSSIAN) {
+            this.distribution = distribution;
+            this.mean = (double)lolim + (hilim - lolim) / 2; // Correction du bug - ajout d'une conversion explicite
+            this.rate = Double.NaN;
+            this.lolim = lolim;
+            this.hilim = hilim;
+        } else {
+            throw new BadTimerConstructorException("Bad Timer constructor for selected distribution");
+        }
+    }
+
+    
     public String getDistribution(){
         return this.distribution.name();
     }
@@ -126,17 +130,6 @@ public class RandomTimer implements Timer {
         return -1; // Theoretically impossible !!!
     }
 
-    /*
-     * Equivalent to methodInvocator.RandomTimer#next()
-     *
-     * @param since has no effect
-     *
-     * @see methodInvocator.RandomTimer#next(int)
-     */
-	/*@Override
-	public Integer next(int since){
-		return this.next();
-	}*/
 
     /**
      * Give good mean
