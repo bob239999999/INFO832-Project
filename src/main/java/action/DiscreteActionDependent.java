@@ -32,7 +32,7 @@ public class DiscreteActionDependent implements DiscreteActionInterface {
 
     public void addDependence(Object o, String dependentMethodName, Timer timerDependence) {
         this.dependentActions.add(new DiscreteAction(o, dependentMethodName, timerDependence));
-        this.actionIterator = this.dependentActions.iterator();  // Reinitialize the iterator
+        this.reinitializeIterator();
     }
 
     private void reinitializeIterator() {
