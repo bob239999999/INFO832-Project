@@ -61,7 +61,7 @@ public class RandomTimer implements Timer {
     public RandomTimer(randomDistribution distribution, int lolim, int hilim) throws BadTimerConstructorException {
         if (distribution == randomDistribution.POSIBILIST || distribution == randomDistribution.GAUSSIAN) {
             this.distribution = distribution;
-            this.mean = (double)lolim + (hilim - lolim) / 2; // Correction du bug - ajout d'une conversion explicite
+            this.mean = lolim + (hilim - lolim) / 2;
             this.rate = Double.NaN;
             this.lolim = lolim;
             this.hilim = hilim;
@@ -154,13 +154,13 @@ public class RandomTimer implements Timer {
      */
     private int nextTimePoisson() {
 
-        double L = Math.exp(-this.mean);
+        double l = Math.exp(-this.mean);
         int k = 0;
         double p = 1.0;
         do {
             p = p * this.r.nextDouble();
             k++;
-        } while (p > L);
+        } while (p > l);
         return k - 1;
     }
 
