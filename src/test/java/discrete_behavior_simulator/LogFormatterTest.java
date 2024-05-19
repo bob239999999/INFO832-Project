@@ -1,6 +1,7 @@
 package discrete_behavior_simulator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -55,7 +56,21 @@ public class LogFormatterTest {
         // Verification
         assertEquals(expectedDate, formattedDate);
     }
+
+    @Test
+    public void testCalcDateWithNegativeMillis() {
+        // Create an instance of LogFormatter
+        LogFormatter formatter = new LogFormatter();
+        
+        // Define a negative milliseconds value for testing
+        long negativeMillis = -1L;
     
+        // Verify that calcDate throws an IllegalArgumentException when passed negative milliseconds
+        assertThrows(IllegalArgumentException.class, () -> {
+            formatter.calcDate(negativeMillis);
+        });
+    }
+
     private String calcDate(long millisecs) {
         SimpleDateFormat date_format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss.SS");
         Date resultdate = new Date(millisecs);
