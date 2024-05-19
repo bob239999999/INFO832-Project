@@ -1,4 +1,4 @@
-package discreteBehaviorSimulator;
+package discrete_behavior_simulator;
 
 import static org.junit.Assert.assertEquals;
 
