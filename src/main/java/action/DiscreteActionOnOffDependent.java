@@ -41,7 +41,7 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 
 
 
-    public DiscreteActionOnOffDependent(Object o, String on, SortedSet<Integer> datesOn, String off, TreeSet<Integer> datesOff){
+    public DiscreteActionOnOffDependent(Object o, String on, SortedSet<Integer> datesOn, String off, SortedSet<Integer> datesOff){
 
         this.onAction = new DiscreteAction(o, on, new DateTimer(datesOn));
         this.offAction = new DiscreteAction(o, off, new DateTimer(datesOff));
