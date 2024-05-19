@@ -19,14 +19,13 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
     private Integer lastOffDelay=0;
 
     /**
-     * Construct an On Off dependence, first action (method) called is On, then method nextMethod() is called to select the next action.
-     * The default behavior of nextMethod() is to switch between On and Off actions.  It can be change by overloading.
+     * Constructs a dependent action system with 'on' and 'off' states.
      *
-     * @param o L'objet sur lequel la méthode opère.
-     * @param on Nom de la méthode pour l'action 'on'.
-     * @param timerOn Timer pour l'action 'on'.
-     * @param off Nom de la méthode pour l'action 'off'.
-     * @param timerOff Timer pour l'action 'off'.
+     * @param o Object on which the method operates.
+     * @param on Method name for the 'on' action.
+     * @param timerOn Timer for the 'on' action.
+     * @param off Method name for the 'off' action.
+     * @param timerOff Timer for the 'off' action.
      */
 
 
