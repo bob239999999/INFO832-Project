@@ -1,11 +1,11 @@
 package discrete_behavior_simulator;
 
+import exceptions_custom.UnexpectedTimeChangeException;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-import exceptions_custom.UnexpectedTimeChangeException;
 
 public class Clock {
     private static Clock instance = null;
