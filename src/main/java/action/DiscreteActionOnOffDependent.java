@@ -1,8 +1,7 @@
 package action;
 
 import java.lang.reflect.Method;
-import java.util.TreeSet;
-import java.util.Vector;
+import java.util.SortedSet;
 
 import timer.DateTimer;
 import timer.Timer;
@@ -41,7 +40,7 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 
 
 
-    public DiscreteActionOnOffDependent(Object o, String on, TreeSet<Integer> datesOn, String off, TreeSet<Integer> datesOff){
+    public DiscreteActionOnOffDependent(Object o, String on, SortedSet<Integer> datesOn, String off, SortedSet<Integer> datesOff){
 
         this.onAction = new DiscreteAction(o, on, new DateTimer(datesOn));
         this.offAction = new DiscreteAction(o, off, new DateTimer(datesOff));

@@ -6,7 +6,7 @@ import timer.Timer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DiscreteActionDependentTest {
+class DiscreteActionDependentTest {
 
     private static class Door {
         public void open() {
@@ -73,7 +73,7 @@ public class DiscreteActionDependentTest {
     }
 
 	@Test
-    public void testAddDependence() {
+    void testAddDependence() {
         // Check initial action
         assertEquals(door.getClass(), actionDependent.getObject().getClass());
         assertEquals("open", actionDependent.getMethod().getName());
@@ -93,14 +93,14 @@ public class DiscreteActionDependentTest {
     }
 
 	@Test
-    public void testConstruction() {
+    void testConstruction() {
         // Check initial action
         assertEquals(door.getClass(), actionDependent.getObject().getClass());
         assertEquals("open", actionDependent.getMethod().getName());
     }
 
     @Test
-    public void testAddDependence1() {
+    void testAddDependence1() {
         // Simulate the actions
         actionDependent.nextMethod();
         assertEquals(light1.getClass(), actionDependent.getObject().getClass());
@@ -108,7 +108,7 @@ public class DiscreteActionDependentTest {
     }
 
     @Test
-    public void testAddDependence2() {
+    void testAddDependence2() {
         // Simulate the actions
         actionDependent.nextMethod();
         actionDependent.nextMethod();

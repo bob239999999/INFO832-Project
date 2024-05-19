@@ -1,4 +1,4 @@
-package discreteBehaviorSimulator;
+package discrete_behavior_simulator;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,40 +19,40 @@ public class LogFormatterTest {
 
     @Test
     public void testFormat() {
-        // Entree
+        // Entrance
         LogRecord record = new LogRecord(Level.INFO, "Test message");
         long millis = System.currentTimeMillis();
         record.setMillis(millis);
 
-        // Creation de l'objet LogFormatter
+        // Creating the LogFormatter object
         LogFormatter formatter = new LogFormatter();
 
-        // Appel de la méthode format()
+        // Calling the format() method
         String formatted = formatter.format(record);
 
-        // Résultat attendu
+        // Expected result
         String expected = this.calcDate(millis) + ": INFO\nTest message\n";
         System.out.println(expected);
         System.out.println(formatted);
         
-        // Vérification
+        // Verification
         assertEquals(expected, formatted);
     }
 
     @Test
     public void testCalcDate() {
-        // Entrée
+        // Entrance
         long millis = System.currentTimeMillis();
 
-        // Appel de la méthode calcDate()
+        // Calling the calcDate() method
         String formattedDate = this.calcDate(millis);
 
-        // Résultat attendu
-        // Format de la date : "yyyy.MM.dd HH:mm:ss.SS"
+        // Expected result
+        // Date format: "yyyy.MM.dd HH:mm:ss.SS"
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss.SS");
         String expectedDate = dateFormat.format(new Date(millis));
 
-        // Vérification
+        // Verification
         assertEquals(expectedDate, formattedDate);
     }
     

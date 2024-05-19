@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > MergedTimer</title>
+  <title>Coverage Report > DiscreteActionDependent</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,10 +19,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">timer</a>
+    <a href="../index.html">action</a>
 </div>
 
-<h1>Coverage Summary for Class: MergedTimer (timer)</h1>
+<h1>Coverage Summary for Class: DiscreteActionDependent (action)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -41,29 +41,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">MergedTimer</td>
+  <td class="name">DiscreteActionDependent</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/1)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    46,2%
   </span>
   <span class="absValue">
-    (0/3)
+    (6/13)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    68%
   </span>
   <span class="absValue">
-    (0/7)
+    (17/25)
   </span>
 </td>
 </tr>
@@ -75,28 +75,93 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package timer;
+<code class="sourceCode" id="sourceCode">&nbsp;package action;
 &nbsp;
-&nbsp;public class MergedTimer implements Timer{
+&nbsp;import java.lang.reflect.Method;
+&nbsp;import java.util.Iterator;
+&nbsp;import java.util.TreeSet;
 &nbsp;
-&nbsp;    private Timer timer1;
-&nbsp;    private Timer timer2;
+&nbsp;import timer.Timer;
 &nbsp;
-<b class="nc">&nbsp;    public MergedTimer(Timer timer1, Timer timer2) {</b>
-<b class="nc">&nbsp;        this.timer1 = timer1;</b>
-<b class="nc">&nbsp;        this.timer2 = timer2;</b>
+&nbsp;/**
+&nbsp; * Manages a sequence of dependent actions, starting with a base action and cycling through additional actions.
+&nbsp; */
+&nbsp;public class DiscreteActionDependent implements DiscreteActionInterface {
+&nbsp;
+&nbsp;    private final DiscreteAction baseAction;
+&nbsp;    private final TreeSet&lt;DiscreteAction&gt; dependentActions;
+&nbsp;    private Iterator&lt;DiscreteAction&gt; actionIterator;
+&nbsp;    private DiscreteAction currentAction;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructs a series of dependent actions. The first action called is identified by baseMethodName.
+&nbsp;     *
+&nbsp;     * @param o Object on which the base method operates
+&nbsp;     * @param baseMethodName Name of the base method
+&nbsp;     * @param timerBase Timer associated with the base action
+&nbsp;     */
+<b class="fc">&nbsp;    public DiscreteActionDependent(Object o, String baseMethodName, Timer timerBase) {</b>
+<b class="fc">&nbsp;        this.baseAction = new DiscreteAction(o, baseMethodName, timerBase);</b>
+<b class="fc">&nbsp;        this.dependentActions = new TreeSet&lt;&gt;();</b>
+<b class="fc">&nbsp;        this.actionIterator = this.dependentActions.iterator();</b>
+<b class="fc">&nbsp;        this.currentAction = this.baseAction;</b>
 &nbsp;    }
-&nbsp;    @Override
-&nbsp;    public boolean hasNext() {
-<b class="nc">&nbsp;        return (this.timer1.hasNext() &amp;&amp; this.timer2.hasNext());</b>
+&nbsp;
+&nbsp;    public void addDependence(Object o, String dependentMethodName, Timer timerDependence) {
+<b class="fc">&nbsp;        this.dependentActions.add(new DiscreteAction(o, dependentMethodName, timerDependence));</b>
+<b class="fc">&nbsp;        this.actionIterator = this.dependentActions.iterator();  // Reinitialize the iterator</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    @Override
-&nbsp;    public Integer next() {
-<b class="nc">&nbsp;        if(this.hasNext()) {</b>
-<b class="nc">&nbsp;            return this.timer1.next() + this.timer2.next();</b>
+&nbsp;    private void reinitializeIterator() {
+<b class="fc">&nbsp;        this.actionIterator = this.dependentActions.iterator();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void nextMethod() {
+<b class="fc">&nbsp;        if (this.currentAction.equals(this.baseAction) &amp;&amp; !this.dependentActions.isEmpty()) {</b>
+<b class="fc">&nbsp;            this.currentAction = this.actionIterator.next();</b>
+<b class="fc">&nbsp;        } else if (this.currentAction.equals(this.dependentActions.last())) {</b>
+<b class="fc">&nbsp;            this.currentAction = this.baseAction;</b>
+<b class="fc">&nbsp;            reinitializeIterator();</b>
+<b class="fc">&nbsp;        } else if (this.actionIterator.hasNext()) {</b>
+<b class="fc">&nbsp;            this.currentAction = this.actionIterator.next();</b>
 &nbsp;        }
-<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void spendTime(int t) {
+<b class="nc">&nbsp;        this.dependentActions.forEach(action -&gt; action.spendTime(t));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateTimeLaps() {
+<b class="nc">&nbsp;        this.nextMethod();  // Advances to the next method, effectively updating time laps</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Method getMethod() {
+<b class="fc">&nbsp;        return this.currentAction.getMethod();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getCurrentLapsTime() {
+<b class="nc">&nbsp;        return this.currentAction.getCurrentLapsTime();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Object getObject() {
+<b class="fc">&nbsp;        return this.currentAction.getObject();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int compareTo(DiscreteActionInterface c) {
+<b class="nc">&nbsp;        return this.currentAction.compareTo(c);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Boolean isEmpty() {
+<b class="nc">&nbsp;        return !this.hasNext();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public DiscreteActionInterface next() {
+<b class="nc">&nbsp;        this.nextMethod();</b>
+<b class="nc">&nbsp;        return this;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean hasNext() {
+<b class="nc">&nbsp;        return this.baseAction.hasNext() || !this.dependentActions.isEmpty();</b>
 &nbsp;    }
 &nbsp;
 &nbsp;}
@@ -123,7 +188,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-05-19 14:34</div>
+    <div style="float:right;">generated on 2024-05-19 17:03</div>
 </div>
 </body>
 </html>
