@@ -6,7 +6,7 @@ import timer.Timer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DiscreteActionDependentTest {
+class DiscreteActionDependentTest {
 
     private static class Door {
         public void open() {
