@@ -1,0 +1,333 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > RandomTimer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">timer</a>
+</div>
+
+<h1>Coverage Summary for Class: RandomTimer (timer)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RandomTimer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/61)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">RandomTimer$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">RandomTimer$randomDistribution</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/64)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package timer;
+&nbsp;
+&nbsp;import java.util.Random;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Flavien Vernier
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;public class RandomTimer implements Timer {
+&nbsp;
+<b class="nc">&nbsp;    public enum randomDistribution {</b>
+<b class="nc">&nbsp;        POISSON, EXP, POSIBILIST, GAUSSIAN;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private Random r = new Random();</b>
+&nbsp;    private randomDistribution distribution;
+&nbsp;    private double rate;
+&nbsp;    private double mean;
+&nbsp;    private double lolim;
+&nbsp;    private double hilim;
+&nbsp;
+&nbsp;
+&nbsp;    public static randomDistribution string2Distribution(String distributionName){
+<b class="nc">&nbsp;        return Enum.valueOf(RandomTimer.randomDistribution.class, distributionName.toUpperCase());</b>
+&nbsp;    }
+&nbsp;    public static String distribution2String(randomDistribution distribution){
+<b class="nc">&nbsp;        return distribution.name();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param param constraint
+&nbsp;     * @throws Exception
+&nbsp;     */
+<b class="nc">&nbsp;    public RandomTimer(randomDistribution distribution, double param) throws Exception{</b>
+<b class="nc">&nbsp;        if(distribution == randomDistribution.EXP ){</b>
+<b class="nc">&nbsp;            this.distribution = distribution;</b>
+<b class="nc">&nbsp;            this.rate = param;</b>
+<b class="nc">&nbsp;            this.mean = 1/param;</b>
+<b class="nc">&nbsp;            this.lolim = 0;</b>
+<b class="nc">&nbsp;            this.hilim = Double.POSITIVE_INFINITY;</b>
+<b class="nc">&nbsp;        }else if(distribution == randomDistribution.POISSON){</b>
+<b class="nc">&nbsp;            this.distribution = distribution;</b>
+<b class="nc">&nbsp;            this.rate = Double.NaN;</b>
+<b class="nc">&nbsp;            this.mean = param;</b>
+<b class="nc">&nbsp;            this.lolim = 0;</b>
+<b class="nc">&nbsp;            this.hilim = Double.POSITIVE_INFINITY;</b>
+&nbsp;        }else{
+<b class="nc">&nbsp;            throw new Exception(&quot;Bad Timer constructor for selected distribution&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * @param min/max constraint
+&nbsp;     * @throws Exception
+&nbsp;     */
+<b class="nc">&nbsp;    public RandomTimer(randomDistribution distribution, int lolim, int hilim) throws Exception{</b>
+<b class="nc">&nbsp;        if(distribution == randomDistribution.POSIBILIST || distribution == randomDistribution.GAUSSIAN){</b>
+<b class="nc">&nbsp;            this.distribution = distribution;</b>
+<b class="nc">&nbsp;            this.mean = lolim + (hilim - lolim)/2;</b>
+<b class="nc">&nbsp;            this.rate = Double.NaN;</b>
+<b class="nc">&nbsp;            this.lolim = lolim;</b>
+<b class="nc">&nbsp;            this.hilim = hilim;</b>
+&nbsp;        }else{
+<b class="nc">&nbsp;            throw new Exception(&quot;Bad Timer constructor for selected distribution&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDistribution(){
+<b class="nc">&nbsp;        return this.distribution.name();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDistributionParam() {
+<b class="nc">&nbsp;        if(distribution == randomDistribution.EXP ){</b>
+<b class="nc">&nbsp;            return &quot;rate: &quot; + this.rate;</b>
+<b class="nc">&nbsp;        }else if(distribution == randomDistribution.POISSON){</b>
+<b class="nc">&nbsp;            return &quot;mean: &quot; + this.mean;</b>
+<b class="nc">&nbsp;        }else if(distribution == randomDistribution.POSIBILIST || distribution == randomDistribution.GAUSSIAN){</b>
+<b class="nc">&nbsp;            return &quot;lolim: &quot; + this.lolim + &quot; hilim: &quot; + this.hilim;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return &quot;null&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getMean(){
+<b class="nc">&nbsp;        return this.mean;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String toString(){
+<b class="nc">&nbsp;        String s = this.getDistribution();</b>
+<b class="nc">&nbsp;        switch (this.distribution){</b>
+&nbsp;            case POSIBILIST :
+<b class="nc">&nbsp;                s += &quot; LoLim:&quot; + this.lolim + &quot; HiLim:&quot; + this.hilim;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case POISSON :
+<b class="nc">&nbsp;                s += &quot; mean:&quot; + this.mean;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case EXP :
+<b class="nc">&nbsp;                s += &quot; rate:&quot; + this.rate;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case GAUSSIAN :
+<b class="nc">&nbsp;                s += &quot; LoLim:&quot; + this.lolim + &quot; HiLim:&quot; + this.hilim;</b>
+&nbsp;                break;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return s;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /* (non-Javadoc)
+&nbsp;     * @see methodInvocator.Timer#next()
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Integer next(){
+<b class="nc">&nbsp;        switch (this.distribution){</b>
+&nbsp;            case POSIBILIST :
+<b class="nc">&nbsp;                return this.nextTimePosibilist();</b>
+&nbsp;            case POISSON :
+<b class="nc">&nbsp;                return this.nextTimePoisson();</b>
+&nbsp;            case EXP :
+<b class="nc">&nbsp;                return this.nextTimeExp();</b>
+&nbsp;            case GAUSSIAN :
+<b class="nc">&nbsp;                return this.nextTimeGaussian();</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return -1; // Theoretically impossible !!!</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /*
+&nbsp;     * Equivalent to methodInvocator.RandomTimer#next()
+&nbsp;     *
+&nbsp;     * @param since has no effect
+&nbsp;     *
+&nbsp;     * @see methodInvocator.RandomTimer#next(int)
+&nbsp;     */
+&nbsp;	/*@Override
+&nbsp;	public Integer next(int since){
+&nbsp;		return this.next();
+&nbsp;	}*/
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Give good mean
+&nbsp;     * Give wrong variance
+&nbsp;     */
+&nbsp;    private int nextTimePosibilist(){
+<b class="nc">&nbsp;        return (int)this.lolim + (int)(this.r.nextDouble() * (this.hilim - this.lolim));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Give good mean
+&nbsp;     * Give wrong variance
+&nbsp;     */
+&nbsp;    private int nextTimeExp(){
+<b class="nc">&nbsp;        return (int)(-Math.log(1.0 - this.r.nextDouble()) / this.rate);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Give good mean
+&nbsp;     * Give good variance
+&nbsp;     */
+&nbsp;    private int nextTimePoisson() {
+&nbsp;
+<b class="nc">&nbsp;        double L = Math.exp(-this.mean);</b>
+<b class="nc">&nbsp;        int k = 0;</b>
+<b class="nc">&nbsp;        double p = 1.0;</b>
+&nbsp;        do {
+<b class="nc">&nbsp;            p = p * this.r.nextDouble();</b>
+<b class="nc">&nbsp;            k++;</b>
+<b class="nc">&nbsp;        } while (p &gt; L);</b>
+<b class="nc">&nbsp;        return k - 1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    private int nextTimeGaussian(){
+<b class="nc">&nbsp;        return (int)this.lolim + (int)((this.r.nextGaussian() + 1.0)/2.0 * (this.hilim - this.lolim));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean hasNext() {
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-19 14:34</div>
+</div>
+</body>
+</html>
