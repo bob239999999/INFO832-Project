@@ -1,0 +1,335 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > DiscreteActionSimulator</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">discrete_behavior_simulator</a>
+</div>
+
+<h1>Coverage Summary for Class: DiscreteActionSimulator (discrete_behavior_simulator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DiscreteActionSimulator</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/102)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;package discrete_behavior_simulator;
+&nbsp;
+&nbsp;import java.lang.reflect.Method;
+&nbsp;import java.util.Collections;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.logging.ConsoleHandler;
+&nbsp;import java.util.logging.FileHandler;
+&nbsp;import java.util.logging.Level;
+&nbsp;import java.util.logging.Logger;
+&nbsp;
+&nbsp;import action.DiscreteActionInterface;
+&nbsp;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Tiphaine Bulou (2016)
+&nbsp; * @author Flavien Vernier
+&nbsp; *
+&nbsp; */
+&nbsp;public class DiscreteActionSimulator implements Runnable {
+&nbsp;
+&nbsp;
+&nbsp;    private Thread t;
+<b class="nc">&nbsp;    private boolean running = false;</b>
+&nbsp;
+&nbsp;    private Clock globalTime;
+&nbsp;
+<b class="nc">&nbsp;    private ArrayList&lt;DiscreteActionInterface&gt; actionsList = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;    private int nbLoop;
+&nbsp;    private int step;
+&nbsp;
+&nbsp;    private Logger logger;
+&nbsp;    private FileHandler logFile;
+&nbsp;    private ConsoleHandler logConsole;
+&nbsp;
+<b class="nc">&nbsp;    public DiscreteActionSimulator(){</b>
+&nbsp;
+&nbsp;        // Start logger
+<b class="nc">&nbsp;        this.logger = Logger.getLogger(&quot;DAS&quot;);</b>
+&nbsp;        //this.logger = Logger.getLogger(&quot;APP&quot;);
+<b class="nc">&nbsp;        this.logger.setLevel(Level.ALL);</b>
+<b class="nc">&nbsp;        this.logger.setUseParentHandlers(true);</b>
+&nbsp;        try{
+<b class="nc">&nbsp;            this.logFile = new FileHandler(this.getClass().getName() + &quot;.log&quot;);</b>
+&nbsp;            //this.logFile.setFormatter(new SimpleFormatter());
+<b class="nc">&nbsp;            this.logFile.setFormatter(new LogFormatter());</b>
+<b class="nc">&nbsp;            this.logConsole = new ConsoleHandler();</b>
+<b class="nc">&nbsp;        }catch(Exception e){</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        this.logger.addHandler(logFile);</b>
+<b class="nc">&nbsp;        this.logger.addHandler(logConsole);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        this.globalTime = Clock.getInstance();</b>
+&nbsp;
+<b class="nc">&nbsp;        this.t = new Thread(this);</b>
+<b class="nc">&nbsp;        this.t.setName(&quot;Discrete Action Simulator&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param nbLoop defines the number of loop for the simulation, the simulation is infinite if nbLoop is negative or 0.
+&nbsp;     */
+&nbsp;    public void setNbLoop(int nbLoop){
+<b class="nc">&nbsp;        if(nbLoop&gt;0){</b>
+<b class="nc">&nbsp;            this.nbLoop = nbLoop;</b>
+<b class="nc">&nbsp;            this.step = 1;</b>
+&nbsp;        }else{ // running infinitely
+<b class="nc">&nbsp;            this.nbLoop = 0;</b>
+<b class="nc">&nbsp;            this.step = -1;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addAction(DiscreteActionInterface c){
+&nbsp;
+<b class="nc">&nbsp;        if(c.hasNext()) {</b>
+&nbsp;            // add to list of actions, next is call to the action exist at the first time
+<b class="nc">&nbsp;            this.actionsList.add(c.next());</b>
+&nbsp;
+&nbsp;            // sort the list for ordered execution
+<b class="nc">&nbsp;            Collections.sort(this.actionsList);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;	
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return the laps time before the next action
+&nbsp;     */
+&nbsp;    private int nextLapsTime() {
+<b class="nc">&nbsp;        DiscreteActionInterface currentAction = this.actionsList.get(0);</b>
+<b class="nc">&nbsp;        return currentAction.getCurrentLapsTime();</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * @return laps time of the running action
+&nbsp;     */
+&nbsp;    private int runAction() {
+&nbsp;        // Utilisation d&#39;un modèle de chaîne de caractères pour les messages de journalisation
+<b class="nc">&nbsp;        final String LOG_TEMPLATE_WITH_TIME = &quot;[DAS] run action %s on %s:%d at %d after %d time units\n&quot;;</b>
+<b class="nc">&nbsp;        final String LOG_TEMPLATE_WITHOUT_TIME = &quot;[DAS] run action %s on %s:%d after %d time units\n&quot;;</b>
+&nbsp;    
+&nbsp;        // Run the first action
+<b class="nc">&nbsp;        int sleepTime = 0;</b>
+<b class="nc">&nbsp;        DiscreteActionInterface currentAction = this.actionsList.get(0);</b>
+<b class="nc">&nbsp;        Object o = currentAction.getObject();</b>
+<b class="nc">&nbsp;        Method m = currentAction.getMethod();</b>
+<b class="nc">&nbsp;        sleepTime = currentAction.getCurrentLapsTime();</b>
+&nbsp;        try {
+&nbsp;            // Thread.sleep(sleepTime); // Real time can be very slow
+<b class="nc">&nbsp;            Thread.yield();</b>
+&nbsp;            // Thread.sleep(1000); // Wait message bus sends
+<b class="nc">&nbsp;            if (this.globalTime != null) {</b>
+<b class="nc">&nbsp;                this.globalTime.increase(sleepTime);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            m.invoke(o);</b>
+&nbsp;            
+&nbsp;            // Utilisation de String.format pour formater le message de journalisation, remplaçant ainsi la concaténation de chaînes
+&nbsp;            String logMessage;
+<b class="nc">&nbsp;            if (this.globalTime != null) {</b>
+<b class="nc">&nbsp;                logMessage = String.format(LOG_TEMPLATE_WITH_TIME, m.getName(), o.getClass().getName(), o.hashCode(), this.globalTime.getTime(), sleepTime);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                logMessage = String.format(LOG_TEMPLATE_WITHOUT_TIME, m.getName(), o.getClass().getName(), o.hashCode(), sleepTime);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            this.logger.log(Level.FINE, logMessage); // Remplacement de System.out.println par une méthode de journalisation</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return sleepTime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    private void updateTimes(int runningTimeOf1stCapsul) {
+&nbsp;        // Utilisation d&#39;un modèle de chaîne de caractères pour les messages de journalisation
+<b class="nc">&nbsp;        final String LOG_TEMPLATE_WITH_TIME = &quot;[DAS] reset action %s on %s:%d at %d to %d time units\n&quot;;</b>
+<b class="nc">&nbsp;        final String LOG_TEMPLATE_WITHOUT_TIME = &quot;[DAS] reset action %s on %s:%d to %d time units\n&quot;;</b>
+&nbsp;    
+&nbsp;        // update time laps of all actions
+<b class="nc">&nbsp;        for (int i = 1; i &lt; this.actionsList.size(); i++) {</b>
+<b class="nc">&nbsp;            this.actionsList.get(i).spendTime(runningTimeOf1stCapsul);</b>
+&nbsp;        }
+&nbsp;    
+&nbsp;    
+<b class="nc">&nbsp;        DiscreteActionInterface a = this.actionsList.remove(0);</b>
+<b class="nc">&nbsp;        if (a.hasNext()) {</b>
+<b class="nc">&nbsp;            a = a.next();</b>
+<b class="nc">&nbsp;            this.actionsList.add(a);</b>
+&nbsp;    
+&nbsp;            String logMessage;
+<b class="nc">&nbsp;            if (this.globalTime != null) {</b>
+<b class="nc">&nbsp;                logMessage = String.format(LOG_TEMPLATE_WITH_TIME, a.getMethod().getName(), a.getObject().getClass().getName(), a.getObject().hashCode(), this.globalTime.getTime(), a.getCurrentLapsTime());</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                logMessage = String.format(LOG_TEMPLATE_WITHOUT_TIME, a.getMethod().getName(), a.getObject().getClass().getName(), a.getObject().hashCode(), a.getCurrentLapsTime());</b>
+&nbsp;            }
+&nbsp;            
+<b class="nc">&nbsp;            this.logger.log(Level.FINE, logMessage); // Remplacement de System.out.println par une méthode de journalisation</b>
+<b class="nc">&nbsp;            Collections.sort(this.actionsList);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void run() {
+<b class="nc">&nbsp;		int count = this.nbLoop;</b>
+<b class="nc">&nbsp;		boolean finished = false;</b>
+&nbsp;
+<b class="nc">&nbsp;		String log = String.format(&quot;LANCEMENT DU THREAD %s&quot;, t.getName());</b>
+<b class="nc">&nbsp;		this.logger.log(Level.FINE, log);</b>
+&nbsp;
+<b class="nc">&nbsp;		while(running &amp;&amp; !finished){</b>
+&nbsp;
+<b class="nc">&nbsp;			if(!this.actionsList.isEmpty()){</b>
+<b class="nc">&nbsp;				log = this.toString();</b>
+<b class="nc">&nbsp;				this.logger.log(Level.FINE, log);</b>
+<b class="nc">&nbsp;				this.globalTime.setNextJump(this.nextLapsTime());</b>
+&nbsp;				
+<b class="nc">&nbsp;				this.globalTime.lockWriteAccess();</b>
+<b class="nc">&nbsp;				int runningTime = this.runAction();</b>
+<b class="nc">&nbsp;				this.updateTimes(runningTime);</b>
+<b class="nc">&nbsp;				this.globalTime.unlockWriteAccess();</b>
+&nbsp;				try {
+<b class="nc">&nbsp;					Thread.sleep(100);</b>
+<b class="nc">&nbsp;					this.globalTime.increase(100);</b>
+<b class="nc">&nbsp;				}catch(Exception e) {</b>
+<b class="nc">&nbsp;					e.printStackTrace();</b>
+<b class="nc">&nbsp;					Thread.currentThread().interrupt();</b>
+<b class="nc">&nbsp;				}</b>
+<b class="nc">&nbsp;			}else{</b>
+<b class="nc">&nbsp;				this.logger.log(Level.FINE, &quot;NOTHING TO DO\n&quot;);</b>
+<b class="nc">&nbsp;				this.stop();</b>
+&nbsp;			}
+&nbsp;
+<b class="nc">&nbsp;			count -= this.step;</b>
+<b class="nc">&nbsp;			if(count&lt;=0) {</b>
+<b class="nc">&nbsp;				finished = true;</b>
+&nbsp;			}
+&nbsp;		}
+<b class="nc">&nbsp;		this.running = false;</b>
+<b class="nc">&nbsp;		if(this.step&gt;0) {</b>
+<b class="nc">&nbsp;			log = String.format(&quot;DAS: %s actions done for %s turns asked.&quot;, this.nbLoop - count, this.nbLoop);</b>
+<b class="nc">&nbsp;			this.logger.log(Level.FINE, log);</b>
+&nbsp;		}else {
+<b class="nc">&nbsp;			log = String.format(&quot;DAS: %s actions done!&quot;, count);</b>
+<b class="nc">&nbsp;			this.logger.log(Level.FINE, log);</b>
+&nbsp;		}
+&nbsp;	}
+&nbsp;
+&nbsp;    public void start(){
+<b class="nc">&nbsp;        this.running = true;</b>
+<b class="nc">&nbsp;        this.t.start();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void stop(){
+<b class="nc">&nbsp;        String log = String.format(&quot;STOP THREAD %s obj %s&quot;, t.getName(), this);</b>
+<b class="nc">&nbsp;		this.logger.log(Level.FINE, log);</b>
+<b class="nc">&nbsp;        this.running = false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String toString(){
+<b class="nc">&nbsp;		StringBuilder toS = new StringBuilder(&quot;------------------\nTestAuto :&quot; + this.actionsList.size());</b>
+<b class="nc">&nbsp;		for(DiscreteActionInterface c : this.actionsList){</b>
+<b class="nc">&nbsp;			toS.append(c.toString()).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;		}</b>
+<b class="nc">&nbsp;		toS.append(&quot;---------------------\n&quot;);</b>
+<b class="nc">&nbsp;		return toS.toString();</b>
+&nbsp;	}
+&nbsp;
+&nbsp;    public boolean getRunning() {
+<b class="nc">&nbsp;        return this.running;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-19 17:03</div>
+</div>
+</body>
+</html>
