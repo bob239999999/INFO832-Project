@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions_custom;
 
 public class UnexpectedTimeChangeException extends Exception {
     /**
