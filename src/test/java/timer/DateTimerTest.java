@@ -42,6 +42,40 @@ class DateTimerTest {
         // Cette invocation devrait lever une NoSuchElementException
         assertThrows(NoSuchElementException.class, timer::next, "Une NoSuchElementException devrait être levée lorsque plus aucun intervalle n'est disponible");
     }
+    @Test
+    public void testEmptyDates() {
+        TreeSet<Integer> dates = new TreeSet<>();
+        DateTimer timer = new DateTimer(dates);
 
+        assertFalse(timer.hasNext(), "Le timer ne doit pas avoir de prochain élément");
+        assertThrows(NoSuchElementException.class, timer::next, "Une NoSuchElementException devrait être levée pour une liste vide");
+    }
+
+    @Test
+    public void testNonUniformIntervals() {
+        TreeSet<Integer> dates = new TreeSet<>();
+        dates.add(1);
+        dates.add(4);
+        dates.add(10);
+        dates.add(15);
+
+        DateTimer timer = new DateTimer(dates);
+
+        assertEquals(1, timer.next(), "Le premier intervalle doit être de 1");
+        assertEquals(3, timer.next(), "Le deuxième intervalle doit être de 3");
+        assertEquals(6, timer.next(), "Le troisième intervalle doit être de 6");
+        assertEquals(5, timer.next(), "Le quatrième intervalle doit être de 5");
+    }
+    @Test
+    public void testSingleElement() {
+        TreeSet<Integer> dates = new TreeSet<>();
+        dates.add(5);
+
+        DateTimer timer = new DateTimer(dates);
+
+        assertEquals(5, timer.next(), "L'intervalle unique doit être de 5");
+        assertFalse(timer.hasNext(), "Le timer ne doit plus avoir de prochain élément");
+        assertThrows(NoSuchElementException.class, timer::next, "Une NoSuchElementException devrait être levée après l'unique élément");
+    }
 
 }
