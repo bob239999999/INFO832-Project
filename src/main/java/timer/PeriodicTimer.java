@@ -12,12 +12,13 @@ public class PeriodicTimer implements Timer {
     }
 
     /**
-     * @param at
-     * @param moreOrLess
+     * Constructs a new PeriodicTimer that adjusts the time by a random factor.
      *
-     * use MergedTimer instead
+     * @param at the initial period
+     * @param moreOrLess the timer that randomizes the next call time
+     * @deprecated since "1.2", forRemoval = true. Use {@link MergedTimer} instead.
      */
-    @Deprecated
+    @Deprecated(since = "1.2", forRemoval = true)
     public PeriodicTimer(int at, RandomTimer moreOrLess) {
         this.period = at;
         this.moreOrLess = moreOrLess;
@@ -30,13 +31,14 @@ public class PeriodicTimer implements Timer {
     }
 
     /**
-     * @param period
-     * @param at
-     * @param moreOrLess
+     * Constructs a new PeriodicTimer with specified period, initial offset, and randomizer.
      *
-     * use MergedTimer instead
+     * @param period the period between events
+     * @param at the initial time offset
+     * @param moreOrLess the timer that randomizes the next call time
+     * @deprecated since "1.2", forRemoval = true. Use {@link MergedTimer} instead.
      */
-    @Deprecated
+    @Deprecated(since = "1.2", forRemoval = true)
     public PeriodicTimer(int period, int at, RandomTimer moreOrLess) {
         this.period = period;
         this.moreOrLess = moreOrLess;
@@ -50,32 +52,16 @@ public class PeriodicTimer implements Timer {
 
     @Override
     public Integer next() {
-
-        int next =  this.next;
-
-        if(this.moreOrLess != null) {
-            this.next = this.period + (int)(this.moreOrLess.next() - this.moreOrLess.getMean());
-        }else {
-            this.next = this.period;
-        }
-
-        return next;
-    }
-
-	/*@Override
-	public Integer next(int since) {
-
-		int next = (this.at - (since % this.period) + this.period) % this.period;
+		int nextTime = this.next;
 
 		if(this.moreOrLess != null) {
-			next += this.moreOrLess.next() - this.moreOrLess.getMean();
-			this.next = this.period * 2 - next;
-		}else {
+			this.next = this.period + Math.abs((int)(this.moreOrLess.next() - this.moreOrLess.getMean()));
+		} else {
 			this.next = this.period;
 		}
 
-		return next;
-	}*/
+		return nextTime;
+	}
 
     @Override
     public boolean hasNext() {
