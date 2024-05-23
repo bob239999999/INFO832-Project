@@ -1,0 +1,211 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Clock</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">discreteBehaviorSimulator</a>
+</div>
+
+<h1>Coverage Summary for Class: Clock (discreteBehaviorSimulator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Clock</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package discreteBehaviorSimulator;
+&nbsp;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.Set;
+&nbsp;import java.util.concurrent.locks.ReentrantReadWriteLock;
+&nbsp;
+&nbsp;public class Clock {
+<b class="nc">&nbsp;    private static Clock instance = null;</b>
+&nbsp;
+&nbsp;    private int time;
+&nbsp;    private int nextJump;
+&nbsp;    private ReentrantReadWriteLock lock;
+&nbsp;    private boolean virtual;
+&nbsp;
+&nbsp;
+&nbsp;    private Set&lt;ClockObserver&gt; observers;
+&nbsp;
+<b class="nc">&nbsp;    private Clock() {</b>
+<b class="nc">&nbsp;        this.time = 0;</b>
+<b class="nc">&nbsp;        this.nextJump=0;</b>
+<b class="nc">&nbsp;        this.lock = new ReentrantReadWriteLock();</b>
+<b class="nc">&nbsp;        this.virtual = true;</b>
+<b class="nc">&nbsp;        this.observers = new HashSet&lt;ClockObserver&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static Clock getInstance() {
+<b class="nc">&nbsp;        if (Clock.instance == null) {</b>
+<b class="nc">&nbsp;            Clock.instance = new Clock();</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return Clock.instance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addObserver(ClockObserver o) {
+<b class="nc">&nbsp;        this.observers.add(o);</b>
+&nbsp;    }
+&nbsp;    public void removeObserver(ClockObserver o) {
+<b class="nc">&nbsp;        this.observers.remove(o);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setVirtual(boolean virtual) {
+<b class="nc">&nbsp;        this.virtual = virtual;</b>
+&nbsp;    }
+&nbsp;    public boolean isVirtual() {
+<b class="nc">&nbsp;        return this.virtual;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setNextJump(int nextJump) {
+<b class="nc">&nbsp;        this.nextJump = nextJump;</b>
+<b class="nc">&nbsp;        for(ClockObserver o:this.observers) {</b>
+<b class="nc">&nbsp;            o.nextClockChange(this.nextJump);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;    /*public void setTime(int time) throws IllegalAccessException {
+&nbsp;        this.lock.lock();
+&nbsp;        if (this.time &lt; time) {
+&nbsp;            this.time = time;
+&nbsp;            for(ClockObserver o:this.observers) {
+&nbsp;                o.ClockChange();
+&nbsp;            }
+&nbsp;        }else{
+&nbsp;            this.lock.unlock();
+&nbsp;            throw new IllegalAccessException(&quot;Set time error, cannot go back to the past !!!&quot;);
+&nbsp;        }
+&nbsp;        this.lock.unlock();
+&nbsp;    }*/
+&nbsp;    public void increase(int time) throws Exception {
+&nbsp;
+<b class="nc">&nbsp;        this.lockWriteAccess();</b>
+&nbsp;
+<b class="nc">&nbsp;        if(time != this.nextJump) {</b>
+<b class="nc">&nbsp;            throw new Exception(&quot;Unexpected time change&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        this.time += time;</b>
+<b class="nc">&nbsp;        for(ClockObserver o:this.observers) {</b>
+<b class="nc">&nbsp;            o.clockChange(this.time);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        this.unlockWriteAccess();</b>
+&nbsp;    }
+&nbsp;    public long getTime() {
+<b class="nc">&nbsp;        if(this.virtual) {</b>
+<b class="nc">&nbsp;            return this.time;</b>
+&nbsp;        }else {
+<b class="nc">&nbsp;            return new Date().getTime();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void lockReadAccess() {
+<b class="nc">&nbsp;        this.lock.readLock().lock();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void unlockReadAccess() {
+<b class="nc">&nbsp;        this.lock.readLock().unlock();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void lockWriteAccess() {
+<b class="nc">&nbsp;        this.lock.writeLock().lock();</b>
+&nbsp;    }
+&nbsp;    public void unlockWriteAccess() {
+<b class="nc">&nbsp;        this.lock.writeLock().unlock();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;&quot;+this.time;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-23 14:17</div>
+</div>
+</body>
+</html>

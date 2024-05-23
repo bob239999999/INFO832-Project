@@ -1,0 +1,150 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > LogFormatter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">discreteBehaviorSimulator</a>
+</div>
+
+<h1>Coverage Summary for Class: LogFormatter (discreteBehaviorSimulator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LogFormatter</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package discreteBehaviorSimulator;
+&nbsp;
+&nbsp;import java.text.SimpleDateFormat;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.logging.Formatter;
+&nbsp;import java.util.logging.Handler;
+&nbsp;import java.util.logging.LogRecord;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Flavien Vernier
+&nbsp; *
+&nbsp; */
+<b class="nc">&nbsp;public class LogFormatter  extends Formatter {</b>
+&nbsp;
+&nbsp;    public String format(LogRecord rec) {
+<b class="nc">&nbsp;        StringBuffer buf = new StringBuffer();</b>
+&nbsp;
+<b class="nc">&nbsp;        buf.append(calcDate(rec.getMillis()));</b>
+<b class="nc">&nbsp;        buf.append(&quot;: &quot;);</b>
+<b class="nc">&nbsp;        buf.append(rec.getLevel());</b>
+<b class="nc">&nbsp;        buf.append(System.getProperty(&quot;line.separator&quot;));</b>
+<b class="nc">&nbsp;        buf.append(formatMessage(rec));</b>
+<b class="nc">&nbsp;        buf.append(System.getProperty(&quot;line.separator&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        return buf.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private String calcDate(long millisecs) {
+<b class="nc">&nbsp;        SimpleDateFormat date_format = new SimpleDateFormat(&quot;yyyy.MM.dd HH:mm:ss.SS&quot;);</b>
+<b class="nc">&nbsp;        Date resultdate = new Date(millisecs);</b>
+<b class="nc">&nbsp;        return date_format.format(resultdate);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // this method is called just after the handler using this
+&nbsp;    // formatter is created
+&nbsp;    public String getHead(Handler h) {
+<b class="nc">&nbsp;        return &quot;&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // this method is called just after the handler using this
+&nbsp;    // formatter is closed
+&nbsp;    public String getTail(Handler h) {
+<b class="nc">&nbsp;        return &quot;&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-23 14:17</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,240 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > DiscreteAction</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">action</a>
+</div>
+
+<h1>Coverage Summary for Class: DiscreteAction (action)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DiscreteAction</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90,9%
+  </span>
+  <span class="absValue">
+    (10/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (26/39)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package action;
+&nbsp;
+&nbsp;
+&nbsp;import timer.Timer;
+&nbsp;
+&nbsp;import java.lang.reflect.Method;
+&nbsp;import java.util.logging.Level;
+&nbsp;import java.util.logging.Logger;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Tiphaine Bulou (2016)
+&nbsp; * @author Flavien Vernier
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;// TODO must inherit from Action
+&nbsp;public class DiscreteAction implements DiscreteActionInterface {
+&nbsp;    private Object object;
+&nbsp;    private Method method;
+&nbsp;
+&nbsp;
+&nbsp;    private Timer timmer;				// timer provides new lapsTime
+&nbsp;    //private TreeSet&lt;Integer&gt; dates;	// obsolete, managed in timer
+&nbsp;    //private Vector&lt;Integer&gt; lapsTimes;// obsolete, managed in timer
+&nbsp;    private Integer lapsTime; 			// waiting time (null if never used)
+&nbsp;
+&nbsp;    private Logger logger;
+&nbsp;
+&nbsp;    // Constructor
+<b class="fc">&nbsp;</b>
+&nbsp;    private DiscreteAction() {
+<b class="fc">&nbsp;        // Start logger</b>
+<b class="fc">&nbsp;        this.logger = Logger.getLogger(&quot;DAS&quot;);</b>
+<b class="fc">&nbsp;        //this.logger = Logger.getLogger(&quot;APP&quot;);</b>
+&nbsp;        this.logger.setLevel(Level.ALL);
+&nbsp;        this.logger.setUseParentHandlers(true);
+&nbsp;
+<b class="fc">&nbsp;			/*FileHandler logFile;</b>
+<b class="fc">&nbsp;			ConsoleHandler logConsole;</b>
+&nbsp;			try{
+<b class="fc">&nbsp;				this.logFile = new FileHandler(this.getClass().getName() + &quot;.log&quot;);</b>
+&nbsp;				//this.logFile.setFormatter(new SimpleFormatter());
+<b class="nc">&nbsp;				this.logFile.setFormatter(new LogFormatter());</b>
+<b class="nc">&nbsp;				this.logConsole = new ConsoleHandler();</b>
+<b class="fc">&nbsp;			}catch(Exception e){</b>
+<b class="fc">&nbsp;				e.printStackTrace();</b>
+&nbsp;			}
+&nbsp;			this.logger.addHandler(logFile);
+&nbsp;			this.logger.addHandler(logConsole);*/
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public DiscreteAction(Object o, String m, Timer timmer){</b>
+<b class="fc">&nbsp;        this();</b>
+<b class="fc">&nbsp;        this.object = o;</b>
+&nbsp;        try{
+<b class="fc">&nbsp;            this.method = o.getClass().getDeclaredMethod(m, new Class&lt;?&gt;[0]);</b>
+&nbsp;        }
+&nbsp;        catch(Exception e){
+&nbsp;            e.printStackTrace();
+&nbsp;        }
+&nbsp;        this.timmer = timmer;
+<b class="fc">&nbsp;        //this.updateTimeLaps();</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    // ATTRIBUTION</b>
+&nbsp;
+&nbsp;    public void spendTime(int t) {
+<b class="fc">&nbsp;        Integer old = this.lapsTime;</b>
+&nbsp;        if(this.lapsTime != null) {
+&nbsp;            this.lapsTime -= t;
+&nbsp;        }
+&nbsp;        this.logger.log(Level.FINE, &quot;[DA] operate spendTime on  &quot; + this.getObject().getClass().getName() + &quot;:&quot; + this.getObject().hashCode() + &quot;: old time &quot; + old + &quot; new time &quot; + this.getCurrentLapsTime());
+&nbsp;        //System.out.println(         &quot;[DA] operate spendTime on  &quot; + this.getObject().getClass().getName() + &quot;:&quot; + this.getObject().hashCode() + &quot;: old time &quot; + old + &quot; new time &quot; + this.getCurrentLapsTime() + &quot;\n&quot;);
+&nbsp;    }
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;    // RECUPERATION</b>
+&nbsp;
+<b class="nc">&nbsp;    public Method getMethod(){</b>
+<b class="nc">&nbsp;        return method;</b>
+&nbsp;    }
+<b class="nc">&nbsp;    public Integer getCurrentLapsTime(){</b>
+<b class="nc">&nbsp;        return lapsTime;</b>
+&nbsp;    }
+<b class="nc">&nbsp;    public Object getObject(){</b>
+<b class="nc">&nbsp;        return object;</b>
+&nbsp;    }
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;</b>
+&nbsp;
+<b class="nc">&nbsp;    // COMPARAISON</b>
+&nbsp;    public int compareTo(DiscreteActionInterface c) {
+&nbsp;        if (this.lapsTime == null) { // no lapstime is equivalent to infinity
+&nbsp;            return 1;
+<b class="nc">&nbsp;        }</b>
+&nbsp;        if (c.getCurrentLapsTime() == null) {// no lapstime is equivalent to infinity
+&nbsp;            return -1;
+&nbsp;        }
+&nbsp;        if(this.lapsTime &gt; c.getCurrentLapsTime()){
+<b class="fc">&nbsp;            return 1;</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        if(this.lapsTime &lt; c.getCurrentLapsTime()){</b>
+<b class="fc">&nbsp;            return -1;</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;        if(this.lapsTime == c.getCurrentLapsTime()){
+&nbsp;            return 0;
+&nbsp;        }
+<b class="fc">&nbsp;        return 0;</b>
+<b class="fc">&nbsp;    }</b>
+<b class="nc">&nbsp;</b>
+&nbsp;    public String toString(){
+<b class="fc">&nbsp;        return &quot;Object : &quot; + this.object.getClass().getName() + &quot;\n Method : &quot; + this.method.getName()+&quot;\n Stat. : &quot;+ this.timmer + &quot;\n delay: &quot; + this.lapsTime;</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public DiscreteActionInterface next() {
+&nbsp;        Integer old = this.lapsTime;
+&nbsp;        this.lapsTime = this.timmer.next();
+&nbsp;        this.logger.log(Level.FINE, &quot;[DA] operate next on  &quot; + this.getObject().getClass().getName() + &quot;:&quot; + this.getObject().hashCode() + &quot;: old time &quot; + old + &quot; new time &quot; + this.getCurrentLapsTime());
+&nbsp;        //System.out.println(&quot;[DA] operate &#39;next&#39; on &quot; + this.getObject().getClass().getName() + &quot;:&quot; + this.getObject().hashCode() + &quot;: old time &quot; + old + &quot; new time &quot; + this.getCurrentLapsTime() + &quot;\n&quot;);
+&nbsp;        return this;
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean hasNext() {
+&nbsp;        Boolean more=false;
+&nbsp;        if (this.timmer != null &amp;&amp; this.timmer.hasNext()) {
+&nbsp;            more = true;
+&nbsp;        }/*else if (this.dates != null) {
+&nbsp;			more = !this.dates.isEmpty();
+&nbsp;		}else if (this.lapsTimes != null) {
+&nbsp;			more = !this.lapsTimes.isEmpty();
+&nbsp;		}*/
+&nbsp;        return more;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-23 14:17</div>
+</div>
+</body>
+</html>

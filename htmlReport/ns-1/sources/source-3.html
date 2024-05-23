@@ -1,0 +1,245 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > DiscreteActionOnOffDependent</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">action</a>
+</div>
+
+<h1>Coverage Summary for Class: DiscreteActionOnOffDependent (action)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DiscreteActionOnOffDependent</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/27)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package action;
+&nbsp;
+&nbsp;import java.lang.reflect.Method;
+&nbsp;import java.util.TreeSet;
+&nbsp;import java.util.Vector;
+&nbsp;
+&nbsp;import timer.DateTimer;
+&nbsp;import timer.Timer;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author flver
+&nbsp; *
+&nbsp; */
+&nbsp;public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
+&nbsp;
+&nbsp;    protected DiscreteActionInterface onAction;
+&nbsp;    protected DiscreteActionInterface offAction;
+&nbsp;    protected DiscreteActionInterface currentAction;
+&nbsp;
+&nbsp;    private Integer currentLapsTime;
+<b class="nc">&nbsp;    private Integer lastOffDelay=0;</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Construct an On Off dependence, first action (method) called is On, then method nextMethod() is called to select the next action.
+&nbsp;     * The default behavior of nextMethod() is to switch between On and Off actions.  It can be change by overloading.
+&nbsp;     *
+&nbsp;     * @param o
+&nbsp;     * @param on
+&nbsp;     * @param timerOn
+&nbsp;     * @param off
+&nbsp;     * @param timerOff
+&nbsp;     */
+&nbsp;	/*public DiscreteActionOnOffDependent(Wo o, Method on, Timer timerOn, Method off, Timer timerOff){
+<b class="nc">&nbsp;		this.onAction = new DiscreteAction(o, on, timerOn);</b>
+<b class="nc">&nbsp;		this.offAction = new DiscreteAction(o, off, timerOff);</b>
+<b class="nc">&nbsp;</b>
+&nbsp;		this.currentAction = this.onAction;
+<b class="nc">&nbsp;	}*/</b>
+<b class="nc">&nbsp;</b>
+&nbsp;    public DiscreteActionOnOffDependent(Object o, String on, Timer timerOn, String off, Timer timerOff){
+&nbsp;        this.onAction = new DiscreteAction(o, on, timerOn);
+&nbsp;        this.offAction = new DiscreteAction(o, off, timerOff);
+&nbsp;
+<b class="nc">&nbsp;        this.currentAction = this.offAction;</b>
+&nbsp;        this.currentLapsTime = 0;
+<b class="nc">&nbsp;    }</b>
+<b class="nc">&nbsp;</b>
+&nbsp;    private void dates2Timalapse(TreeSet&lt;Integer&gt; datesOn, TreeSet&lt;Integer&gt; datesOff, Vector&lt;Integer&gt; timeLapseOn, Vector&lt;Integer&gt; timeLapseOff) {
+&nbsp;        Vector&lt;Integer&gt; currentTimeLapse;
+&nbsp;        TreeSet&lt;Integer&gt; currentDates;
+<b class="nc">&nbsp;        Integer date=0;</b>
+<b class="nc">&nbsp;        if(datesOn.first()&lt;datesOff.first()) {</b>
+&nbsp;            currentTimeLapse = timeLapseOn;
+<b class="nc">&nbsp;            currentDates = datesOn;</b>
+&nbsp;        }else {
+&nbsp;            currentTimeLapse = timeLapseOff;
+&nbsp;            currentDates = datesOff;
+&nbsp;        }
+<b class="nc">&nbsp;        Integer nextDate;</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;        while(datesOn.size()&gt;0 || datesOff.size()&gt;0) {</b>
+<b class="nc">&nbsp;            nextDate = currentDates.first();</b>
+&nbsp;
+<b class="nc">&nbsp;            currentTimeLapse.add(nextDate - date);</b>
+<b class="nc">&nbsp;            currentDates.remove(nextDate);</b>
+<b class="nc">&nbsp;</b>
+&nbsp;            date = nextDate;
+&nbsp;
+&nbsp;            if(currentDates == datesOn) {
+&nbsp;                currentDates = datesOff;
+<b class="nc">&nbsp;                currentTimeLapse = timeLapseOff;</b>
+&nbsp;            }else {
+&nbsp;                currentDates = datesOn;
+&nbsp;                currentTimeLapse = timeLapseOn;
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+<b class="nc">&nbsp;</b>
+&nbsp;    public DiscreteActionOnOffDependent(Object o, String on, TreeSet&lt;Integer&gt; datesOn, String off, TreeSet&lt;Integer&gt; datesOff){
+&nbsp;		/*Vector&lt;Integer&gt; timeLapseOn = new Vector&lt;Integer&gt;();
+&nbsp;		Vector&lt;Integer&gt; timeLapseOff = new Vector&lt;Integer&gt;();
+<b class="nc">&nbsp;</b>
+&nbsp;		dates2Timalapse((TreeSet&lt;Integer&gt;)datesOn.clone(), (TreeSet&lt;Integer&gt;)datesOff.clone(), timeLapseOn, timeLapseOff);
+&nbsp;		*/
+&nbsp;        this.onAction = new DiscreteAction(o, on, new DateTimer(datesOn));
+<b class="nc">&nbsp;        this.offAction = new DiscreteAction(o, off, new DateTimer(datesOff));</b>
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        if(datesOn.first() &lt; datesOff.first()){</b>
+<b class="nc">&nbsp;            this.currentAction = this.onAction;</b>
+&nbsp;        }else{
+&nbsp;            this.currentAction = this.offAction;
+&nbsp;        }
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public void nextAction(){
+&nbsp;        if (this.currentAction == this.onAction){
+&nbsp;            this.currentAction = this.offAction;
+&nbsp;            this.currentAction = this.currentAction.next();
+&nbsp;            this.lastOffDelay = this.currentAction.getCurrentLapsTime();
+&nbsp;        }else{
+&nbsp;            this.currentAction = this.onAction;
+&nbsp;            this.currentAction = this.currentAction.next();
+&nbsp;            this.currentAction.spendTime(this.lastOffDelay);
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public	void spendTime(int t) {
+&nbsp;        this.currentAction.spendTime(t);
+&nbsp;    }
+&nbsp;
+&nbsp;    public Method getMethod() {
+&nbsp;        return this.currentAction.getMethod();
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getCurrentLapsTime() {
+&nbsp;        return this.currentAction.getCurrentLapsTime();
+&nbsp;    }
+&nbsp;
+&nbsp;    public Object getObject() {
+&nbsp;        return this.currentAction.getObject();
+&nbsp;    }
+&nbsp;
+&nbsp;    public int compareTo(DiscreteActionInterface c) {
+&nbsp;        return this.currentAction.compareTo(c);
+&nbsp;    }
+&nbsp;
+&nbsp;    public DiscreteActionInterface next() {
+&nbsp;        this.nextAction();
+&nbsp;        return this;
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean hasNext() {
+&nbsp;        return this.onAction.hasNext() || this.offAction.hasNext();
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-23 14:17</div>
+</div>
+</body>
+</html>
