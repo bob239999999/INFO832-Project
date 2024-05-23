@@ -2,5 +2,5 @@
   
 Vous trouverez sur ce github deux branches :   
   - la branche <i>main</i> contenant le code original.  
-  - la branche <i>v2</i> contenant le code après refactoring.
+  - la branche <i>v2-Refactoring</i> contenant le code après refactoring.
 
