@@ -109,7 +109,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;
 &nbsp;    public void addDependence(Object o, String dependentMethodName, Timer timerDependence) {
 <b class="fc">&nbsp;        this.dependentActions.add(new DiscreteAction(o, dependentMethodName, timerDependence));</b>
-<b class="fc">&nbsp;        this.actionIterator = this.dependentActions.iterator();  // Reinitialize the iterator</b>
+<b class="fc">&nbsp;        this.reinitializeIterator();</b>
 &nbsp;    }
 &nbsp;
 &nbsp;    private void reinitializeIterator() {
@@ -188,7 +188,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-05-19 17:03</div>
+    <div style="float:right;">generated on 2024-05-23 14:10</div>
 </div>
 </body>
 </html>

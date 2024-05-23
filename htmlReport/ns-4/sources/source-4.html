@@ -89,12 +89,13 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    }
 &nbsp;
 &nbsp;    /**
-&nbsp;     * @param at
-&nbsp;     * @param moreOrLess
+&nbsp;     * Constructs a new PeriodicTimer that adjusts the time by a random factor.
 &nbsp;     *
-&nbsp;     * use MergedTimer instead
+&nbsp;     * @param at the initial period
+&nbsp;     * @param moreOrLess the timer that randomizes the next call time
+&nbsp;     * @deprecated since &quot;1.2&quot;, forRemoval = true. Use {@link MergedTimer} instead.
 &nbsp;     */
-&nbsp;    @Deprecated
+&nbsp;    @Deprecated(since = &quot;1.2&quot;, forRemoval = true)
 <b class="nc">&nbsp;    public PeriodicTimer(int at, RandomTimer moreOrLess) {</b>
 <b class="nc">&nbsp;        this.period = at;</b>
 <b class="nc">&nbsp;        this.moreOrLess = moreOrLess;</b>
@@ -107,13 +108,14 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    }
 &nbsp;
 &nbsp;    /**
-&nbsp;     * @param period
-&nbsp;     * @param at
-&nbsp;     * @param moreOrLess
+&nbsp;     * Constructs a new PeriodicTimer with specified period, initial offset, and randomizer.
 &nbsp;     *
-&nbsp;     * use MergedTimer instead
+&nbsp;     * @param period the period between events
+&nbsp;     * @param at the initial time offset
+&nbsp;     * @param moreOrLess the timer that randomizes the next call time
+&nbsp;     * @deprecated since &quot;1.2&quot;, forRemoval = true. Use {@link MergedTimer} instead.
 &nbsp;     */
-&nbsp;    @Deprecated
+&nbsp;    @Deprecated(since = &quot;1.2&quot;, forRemoval = true)
 <b class="nc">&nbsp;    public PeriodicTimer(int period, int at, RandomTimer moreOrLess) {</b>
 <b class="nc">&nbsp;        this.period = period;</b>
 <b class="nc">&nbsp;        this.moreOrLess = moreOrLess;</b>
@@ -127,32 +129,16 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;
 &nbsp;    @Override
 &nbsp;    public Integer next() {
+<b class="nc">&nbsp;		int nextTime = this.next;</b>
 &nbsp;
-<b class="nc">&nbsp;        int next =  this.next;</b>
-&nbsp;
-<b class="nc">&nbsp;        if(this.moreOrLess != null) {</b>
-<b class="nc">&nbsp;            this.next = this.period + (int)(this.moreOrLess.next() - this.moreOrLess.getMean());</b>
-&nbsp;        }else {
-<b class="nc">&nbsp;            this.next = this.period;</b>
-&nbsp;        }
-&nbsp;
-<b class="nc">&nbsp;        return next;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;	/*@Override
-&nbsp;	public Integer next(int since) {
-&nbsp;
-&nbsp;		int next = (this.at - (since % this.period) + this.period) % this.period;
-&nbsp;
-&nbsp;		if(this.moreOrLess != null) {
-&nbsp;			next += this.moreOrLess.next() - this.moreOrLess.getMean();
-&nbsp;			this.next = this.period * 2 - next;
-&nbsp;		}else {
-&nbsp;			this.next = this.period;
+<b class="nc">&nbsp;		if(this.moreOrLess != null) {</b>
+<b class="nc">&nbsp;			this.next = this.period + Math.abs((int)(this.moreOrLess.next() - this.moreOrLess.getMean()));</b>
+&nbsp;		} else {
+<b class="nc">&nbsp;			this.next = this.period;</b>
 &nbsp;		}
 &nbsp;
-&nbsp;		return next;
-&nbsp;	}*/
+<b class="nc">&nbsp;		return nextTime;</b>
+&nbsp;	}
 &nbsp;
 &nbsp;    @Override
 &nbsp;    public boolean hasNext() {
@@ -183,7 +169,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-05-19 17:03</div>
+    <div style="float:right;">generated on 2024-05-23 14:10</div>
 </div>
 </body>
 </html>

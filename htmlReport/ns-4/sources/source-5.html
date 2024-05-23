@@ -183,7 +183,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;    public RandomTimer(randomDistribution distribution, int lolim, int hilim) throws BadTimerConstructorException {</b>
 <b class="nc">&nbsp;        if (distribution == randomDistribution.POSIBILIST || distribution == randomDistribution.GAUSSIAN) {</b>
 <b class="nc">&nbsp;            this.distribution = distribution;</b>
-<b class="nc">&nbsp;            this.mean = (double)lolim + (hilim - lolim) / 2; // Correction du bug - ajout d&#39;une conversion explicite</b>
+<b class="nc">&nbsp;            this.mean = lolim + (hilim - lolim) / 2.0;</b>
 <b class="nc">&nbsp;            this.rate = Double.NaN;</b>
 <b class="nc">&nbsp;            this.lolim = lolim;</b>
 <b class="nc">&nbsp;            this.hilim = hilim;</b>
@@ -276,13 +276,13 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;     */
 &nbsp;    private int nextTimePoisson() {
 &nbsp;
-<b class="fc">&nbsp;        double L = Math.exp(-this.mean);</b>
+<b class="fc">&nbsp;        double l = Math.exp(-this.mean);</b>
 <b class="fc">&nbsp;        int k = 0;</b>
 <b class="fc">&nbsp;        double p = 1.0;</b>
 &nbsp;        do {
 <b class="fc">&nbsp;            p = p * this.r.nextDouble();</b>
 <b class="fc">&nbsp;            k++;</b>
-<b class="fc">&nbsp;        } while (p &gt; L);</b>
+<b class="fc">&nbsp;        } while (p &gt; l);</b>
 <b class="fc">&nbsp;        return k - 1;</b>
 &nbsp;    }
 &nbsp;
@@ -320,7 +320,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-05-19 17:03</div>
+    <div style="float:right;">generated on 2024-05-23 14:10</div>
 </div>
 </body>
 </html>

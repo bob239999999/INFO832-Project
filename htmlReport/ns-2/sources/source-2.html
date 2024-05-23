@@ -115,12 +115,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;
 &nbsp;        // Start logger
 <b class="nc">&nbsp;        this.logger = Logger.getLogger(&quot;DAS&quot;);</b>
-&nbsp;        //this.logger = Logger.getLogger(&quot;APP&quot;);
 <b class="nc">&nbsp;        this.logger.setLevel(Level.ALL);</b>
 <b class="nc">&nbsp;        this.logger.setUseParentHandlers(true);</b>
 &nbsp;        try{
 <b class="nc">&nbsp;            this.logFile = new FileHandler(this.getClass().getName() + &quot;.log&quot;);</b>
-&nbsp;            //this.logFile.setFormatter(new SimpleFormatter());
 <b class="nc">&nbsp;            this.logFile.setFormatter(new LogFormatter());</b>
 <b class="nc">&nbsp;            this.logConsole = new ConsoleHandler();</b>
 <b class="nc">&nbsp;        }catch(Exception e){</b>
@@ -172,7 +170,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;     * @return laps time of the running action
 &nbsp;     */
 &nbsp;    private int runAction() {
-&nbsp;        // Utilisation d&#39;un modèle de chaîne de caractères pour les messages de journalisation
+&nbsp;        // Using a string pattern for logging messages
 <b class="nc">&nbsp;        final String LOG_TEMPLATE_WITH_TIME = &quot;[DAS] run action %s on %s:%d at %d after %d time units\n&quot;;</b>
 <b class="nc">&nbsp;        final String LOG_TEMPLATE_WITHOUT_TIME = &quot;[DAS] run action %s on %s:%d after %d time units\n&quot;;</b>
 &nbsp;    
@@ -191,14 +189,14 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;            }
 <b class="nc">&nbsp;            m.invoke(o);</b>
 &nbsp;            
-&nbsp;            // Utilisation de String.format pour formater le message de journalisation, remplaçant ainsi la concaténation de chaînes
+&nbsp;            // Using String.format to format the logging message, replacing string concatenation
 &nbsp;            String logMessage;
 <b class="nc">&nbsp;            if (this.globalTime != null) {</b>
 <b class="nc">&nbsp;                logMessage = String.format(LOG_TEMPLATE_WITH_TIME, m.getName(), o.getClass().getName(), o.hashCode(), this.globalTime.getTime(), sleepTime);</b>
 &nbsp;            } else {
 <b class="nc">&nbsp;                logMessage = String.format(LOG_TEMPLATE_WITHOUT_TIME, m.getName(), o.getClass().getName(), o.hashCode(), sleepTime);</b>
 &nbsp;            }
-<b class="nc">&nbsp;            this.logger.log(Level.FINE, logMessage); // Remplacement de System.out.println par une méthode de journalisation</b>
+<b class="nc">&nbsp;            this.logger.log(Level.FINE, logMessage); // Replacing System.out.println with a logging method</b>
 <b class="nc">&nbsp;        } catch (Exception e) {</b>
 <b class="nc">&nbsp;            e.printStackTrace();</b>
 <b class="nc">&nbsp;        }</b>
@@ -208,7 +206,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;
 &nbsp;
 &nbsp;    private void updateTimes(int runningTimeOf1stCapsul) {
-&nbsp;        // Utilisation d&#39;un modèle de chaîne de caractères pour les messages de journalisation
+&nbsp;        // Using a string pattern for logging messages
 <b class="nc">&nbsp;        final String LOG_TEMPLATE_WITH_TIME = &quot;[DAS] reset action %s on %s:%d at %d to %d time units\n&quot;;</b>
 <b class="nc">&nbsp;        final String LOG_TEMPLATE_WITHOUT_TIME = &quot;[DAS] reset action %s on %s:%d to %d time units\n&quot;;</b>
 &nbsp;    
@@ -230,7 +228,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;                logMessage = String.format(LOG_TEMPLATE_WITHOUT_TIME, a.getMethod().getName(), a.getObject().getClass().getName(), a.getObject().hashCode(), a.getCurrentLapsTime());</b>
 &nbsp;            }
 &nbsp;            
-<b class="nc">&nbsp;            this.logger.log(Level.FINE, logMessage); // Remplacement de System.out.println par une méthode de journalisation</b>
+<b class="nc">&nbsp;            this.logger.log(Level.FINE, logMessage); // Replacing System.out.println with a logging method</b>
 <b class="nc">&nbsp;            Collections.sort(this.actionsList);</b>
 &nbsp;        }
 &nbsp;    }
@@ -329,7 +327,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-05-19 17:03</div>
+    <div style="float:right;">generated on 2024-05-23 14:10</div>
 </div>
 </body>
 </html>

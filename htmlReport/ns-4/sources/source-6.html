@@ -120,15 +120,15 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;
 &nbsp;    @Override
 &nbsp;    public Integer next() {
-<b class="nc">&nbsp;        Integer next = this.next;</b>
+<b class="nc">&nbsp;        Integer currentNext = this.next;</b>
 <b class="nc">&nbsp;        this.time+=this.next;</b>
 <b class="nc">&nbsp;        if(this.time &lt; this.stopTime) {</b>
 <b class="nc">&nbsp;            this.next = this.timer2bound.next();</b>
 &nbsp;        }else {
-<b class="nc">&nbsp;            next = null;</b>
+<b class="nc">&nbsp;            currentNext = null;</b>
 <b class="nc">&nbsp;            this.hasNext=false;</b>
 &nbsp;        }
-<b class="nc">&nbsp;        return next;</b>
+<b class="nc">&nbsp;        return currentNext;</b>
 &nbsp;    }
 &nbsp;
 &nbsp;}
@@ -155,7 +155,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-05-19 17:03</div>
+    <div style="float:right;">generated on 2024-05-23 14:10</div>
 </div>
 </body>
 </html>
